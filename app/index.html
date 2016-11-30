@@ -20,6 +20,8 @@
 
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="/scripts/bundle.js"></script>
+    <script src="/scripts/handlebars.runtime.js"></script>
+    <script src="/scripts/templates.js"></script>
     <!-- <script src="/bower_components/spree-frontend-integration/lib/index.js"></script> -->
     <!-- endbuild -->
   </head>
@@ -59,6 +61,15 @@
           <p>Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.</p>
         </div>
       </div>
+      <div id='main'></div>
+<!--       <script>
+        function renderApp(responseText){
+          document.querySelector('#app').innerHTML = MyApp.html.index({products: responseText['products']});
+        }
+        document.querySelector('#main').innerHTML = MyApp.html.test();
+        var products = (new SpreeApi.productsList()).sendRequest({cb: renderApp})
+      </script>
+ -->
 
       <div class="footer">
         <p>♥ from the Yeoman team</p>

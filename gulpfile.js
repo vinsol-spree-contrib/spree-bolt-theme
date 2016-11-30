@@ -1,7 +1,8 @@
-// generated on 2016-11-29 using generator-webapp 2.3.2
 const gulp = require('gulp');
 const gulpLoadPlugins = require('gulp-load-plugins');
+const merge = require('merge-stream');
 const browserSync = require('browser-sync').create();
+const concat = require('gulp-concat');
 const del = require('del');
 const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
@@ -9,6 +10,10 @@ const gutil = require('gulp-util')
 const browserify = require('browserify')
 const source = require('vinyl-source-stream')
 const babelify = require('babelify')
+const handlebars = require('gulp-handlebars');
+const wrap = require('gulp-wrap');
+var declare = require('gulp-declare');
+
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -37,12 +42,7 @@ gulp.task('scripts', () => {
     })
     .bundle()
     .pipe(source('bundle.js'))
-    // .pipe($.plumber())
-    // .pipe($.sourcemaps.init())
-    // .pipe($.babel())
-    // .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('.tmp/scripts'))
-    // .pipe(reload({stream: true}));
 });
 
 
@@ -72,6 +72,36 @@ gulp.task('html', ['styles', 'scripts'], () => {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('template', ()=>{
+  gulp.src('./node_modules/handlebars/dist/handlebars.runtime.js')
+    .pipe(gulp.dest('.tmp/scripts/'));
+
+  var partials = gulp.src(['app/**/_*.hbs'])
+    .pipe(handlebars())
+    .pipe(wrap('Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));', {}, {
+      imports: {
+        processPartialName: function(fileName) {
+          return JSON.stringify(path.basename(fileName, '.js').substr(1));
+        }
+      }
+    }
+  ));
+
+  var templates = gulp.src('app/**/[^_]*.hbs')
+    .pipe(handlebars({handlebars: require('handlebars')}))
+    .pipe(wrap('Handlebars.template(<%= contents %>)'))
+    .pipe(declare({
+      namespace: 'MyApp.html',
+      noRedeclare: true // Avoid duplicate declarations
+    }
+  ));
+
+  return merge(partials, templates)
+    .pipe(concat('templates.js'))
+    .pipe(gulp.dest('.tmp/scripts'));
+
+})
+
 gulp.task('images', () => {
   return gulp.src('app/images/**/*')
     .pipe($.cache($.imagemin()))
@@ -96,7 +126,7 @@ gulp.task('extras', () => {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', () => {
-  runSequence(['clean', 'wiredep'], ['styles', 'scripts', 'fonts'], () => {
+  runSequence(['clean', 'wiredep'], ['styles', 'scripts', 'template', 'fonts'], () => {
     browserSync.init({
       notify: false,
       port: 9000,
@@ -118,6 +148,7 @@ gulp.task('serve', () => {
     gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/fonts/**/*', ['fonts']);
     gulp.watch('bower.json', ['wiredep', 'fonts']);
+    gulp.watch('app/*.hbs', ['template'])
   });
 });
 
