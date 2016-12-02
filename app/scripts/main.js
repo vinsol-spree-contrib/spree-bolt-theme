@@ -1,9 +1,13 @@
-console.log('\'Allo \'Allo!');
 import { SpreeApi } from './../../bower_components/spree-frontend-integration/lib/index'
-console.log(SpreeApi)
-function renderApp(responseText){
-  document.querySelector('#main').innerHTML = MyApp.html.test({products: responseText['products']});
-  // document.querySelector('#app').innerHTML = MyApp.html.index({products: responseText['products']});
-}
-var products = (new SpreeApi.productsList()).sendRequest({cb: renderApp})
+function renderIndexPage(responseText){
+  document.querySelector('#wrapper').innerHTML = MyApp.html.index({products: responseText['products'], images: responseText['images']});
+};
 
+function renderTemplate(){
+  var path = window.location.pathname.split('/')[1]
+  if(path == ''){
+    (new SpreeApi.productsList()).sendRequest({cb: renderIndexPage})
+  }
+}
+
+renderTemplate()

@@ -4,7 +4,7 @@
   "dependencies": {
     "bootstrap-sass": "~3.3.5",
     "modernizr": "~2.8.1",
-    "spree-frontend-integration": "/Users/vins1/Documents/spree-frontend/"
+    "spree-frontend-integration": "../spree-frontend/"
   },
   "overrides": {
     "bootstrap-sass": {

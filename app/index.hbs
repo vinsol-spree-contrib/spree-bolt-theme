@@ -1,10 +1,16 @@
-hello world
-{{#each products}}
+{{> header}}
+{{> menu_container}}
+{{> main_banner}}
+{{> search}}
+
+<!-- {{#each products}}
   <div class="col-md-3 col-sm-6 product-list-item">
     <div class="panel panel-default">
       <div class="panel-body text-center product-body">
         <p>{{image}}</p>
-        <p> {{name}} </p>
+        <p>{{name}}</p>
+        <p>{{image_ids.[0]}}</p>
+        <p>{{images.0.name}}</p>
       </div>
       <div class="panel-footer text-center">
         <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
@@ -13,4 +19,6 @@ hello world
       </div>
     </div>
   </div>
-{{/each}}
+{{/each}} -->
+
+{{> footer}}

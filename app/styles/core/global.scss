@@ -1,0 +1,52 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+a {
+  color: $primary-black;
+  &:focus,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+  &:hover {
+    color: $primary-hover;
+  }
+}
+
+img {
+  vertical-align: top;
+}
+
+.m-t-20 {
+  margin-top: 20px;
+}
+
+.m-t-25 {
+  margin-top: 25px;
+}
+
+.font-light {
+  font-family: 'Montserrat-Light';
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.vertical-middle {
+  vertical-align: middle;
+}

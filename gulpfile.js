@@ -12,32 +12,39 @@ const source = require('vinyl-source-stream')
 const babelify = require('babelify')
 const handlebars = require('gulp-handlebars');
 const wrap = require('gulp-wrap');
-var declare = require('gulp-declare');
-
+const declare = require('gulp-declare');
+const path = require('path');
+const modRewrite  = require('connect-modrewrite');
+const fs = require("fs");
+const url = require("url");
+const glob = require('glob');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 var dev = true;
+var handlebars_helpers = require('./app/scripts/helpers.js');
 
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.scss')
-    .pipe($.plumber())
-    .pipe($.sourcemaps.init())
+    // .pipe($.plumber())
+    // .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
       precision: 10,
       includePaths: ['.']
     }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
-    .pipe($.sourcemaps.write())
+    // .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    // .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/styles'))
-    .pipe(reload({stream: true}));
+    // .pipe(reload({stream: true}));
 });
 
 gulp.task('scripts', () => {
+    var testFiles = glob.sync('./app/scripts/*.js');
+    testFiles.push('./bower_components/spree-frontend-integration/lib/index.js')
     return browserify({
-      entries: ['./bower_components/spree-frontend-integration/lib/index.js', './app/scripts/main.js'],
+      entries: testFiles,
       transform: [babelify]
     })
     .bundle()
@@ -77,7 +84,7 @@ gulp.task('template', ()=>{
     .pipe(gulp.dest('.tmp/scripts/'));
 
   var partials = gulp.src(['app/**/_*.hbs'])
-    .pipe(handlebars())
+    .pipe(handlebars({'handlebars': handlebars_helpers}))
     .pipe(wrap('Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));', {}, {
       imports: {
         processPartialName: function(fileName) {
@@ -88,7 +95,7 @@ gulp.task('template', ()=>{
   ));
 
   var templates = gulp.src('app/**/[^_]*.hbs')
-    .pipe(handlebars({handlebars: require('handlebars')}))
+    .pipe(handlebars({'handlebars': handlebars_helpers}))
     .pipe(wrap('Handlebars.template(<%= contents %>)'))
     .pipe(declare({
       namespace: 'MyApp.html',
@@ -134,7 +141,12 @@ gulp.task('serve', () => {
         baseDir: ['.tmp', 'app'],
         routes: {
           '/bower_components': 'bower_components'
-        }
+        },
+        middleware: [
+          modRewrite([
+           '!\\.\\w+$ /index.html [L]'
+          ])
+        ]
       }
     });
 
@@ -142,13 +154,13 @@ gulp.task('serve', () => {
       'app/*.html',
       'app/images/**/*',
       '.tmp/fonts/**/*'
-    ]).on('change', reload);
+    ]);
 
     gulp.watch('app/styles/**/*.scss', ['styles']);
     gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/fonts/**/*', ['fonts']);
     gulp.watch('bower.json', ['wiredep', 'fonts']);
-    gulp.watch('app/*.hbs', ['template'])
+    gulp.watch('app/**/*.hbs', ['template'])
   });
 });
 
