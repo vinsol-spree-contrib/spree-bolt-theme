@@ -14,4 +14,12 @@ $(document).ready(function() {
   $('.close-search').on('click', function() {
     $('.search-bar').removeClass('drop');
   });
+
+  $('.cart-icon').on('click', function() {
+    $('.cart-container').addClass('expand');
+  });
+
+  $('.close-cart').on('click', function() {
+    $('.cart-container').removeClass('expand');
+  });
 });

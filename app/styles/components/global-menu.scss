@@ -1,4 +1,5 @@
-.menu-container {
+.menu-container,
+.cart-container {
   @include animate(.75s cubic-bezier(0.5,1,0.05,1.0));
   @include box-shadow(0,0,5px,0,$primary-border);
   background: #ffffff;
@@ -19,7 +20,8 @@
     text-transform: uppercase;
   }
 
-  .close-menu {
+  .close-menu,
+  .close-cart {
     position: absolute;
     right: 25px;
     top: 25px;
@@ -73,5 +75,16 @@
   &.expand {
     left: 0;
     opacity: 1;
+  }
+}
+
+.cart-container {
+  right: -300px;
+  left: auto;
+
+  &.expand {
+    left: auto;
+    opacity: 1;
+    right: 0;
   }
 }
