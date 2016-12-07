@@ -57,7 +57,7 @@ $image-url : '../../images/';
     display: inline-block;
       &:before {
       background: $primary-hover;
-      bottom: -4px;
+      bottom: -6px;
       content: ' ';
       height: 2px;
       left: 0;
@@ -78,7 +78,11 @@ $image-url : '../../images/';
 
 .category-section-all {
   padding: 50px 0;
-  background: #ffffff; 
+  background: #ffffff;
+  .decorated-heading span::before {
+    left: 50%;
+    margin-left: -12.5%;
+  }
 }
 
 .product-container {
