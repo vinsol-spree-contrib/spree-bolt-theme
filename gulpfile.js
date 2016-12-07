@@ -23,7 +23,7 @@ const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 var dev = true;
-var handlebars_helpers = require('./app/scripts/helpers.js');
+// var handlebars_helpers = require('./app/scripts/helpers.js');
 
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.scss')
@@ -43,6 +43,10 @@ gulp.task('styles', () => {
 gulp.task('scripts', () => {
     var testFiles = glob.sync('./app/scripts/*.js');
     testFiles.push('./bower_components/spree-frontend-integration/lib/index.js')
+
+    gulp.src('app/helpers/*.js')
+    .pipe(gulp.dest('.tmp/helpers'))
+
     return browserify({
       entries: testFiles,
       transform: [babelify]
@@ -84,7 +88,7 @@ gulp.task('template', ()=>{
     .pipe(gulp.dest('.tmp/scripts/'));
 
   var partials = gulp.src(['app/**/_*.hbs'])
-    .pipe(handlebars({'handlebars': handlebars_helpers}))
+    .pipe(handlebars())
     .pipe(wrap('Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));', {}, {
       imports: {
         processPartialName: function(fileName) {
@@ -95,7 +99,7 @@ gulp.task('template', ()=>{
   ));
 
   var templates = gulp.src('app/**/[^_]*.hbs')
-    .pipe(handlebars({'handlebars': handlebars_helpers}))
+    .pipe(handlebars())
     .pipe(wrap('Handlebars.template(<%= contents %>)'))
     .pipe(declare({
       namespace: 'MyApp.html',
@@ -158,6 +162,7 @@ gulp.task('serve', () => {
 
     gulp.watch('app/styles/**/*.scss', ['styles']);
     gulp.watch('app/scripts/**/*.js', ['scripts']);
+    gulp.watch('app/helpers/*.js', ['scripts']);
     gulp.watch('app/fonts/**/*', ['fonts']);
     gulp.watch('bower.json', ['wiredep', 'fonts']);
     gulp.watch('app/**/*.hbs', ['template'])
