@@ -88,7 +88,7 @@ $image-url : '../../images/';
 .product-container {
   background: $primary-white;
   min-height: 290px;
-  padding: 10px 20px;
+  padding: 10px 30px;
   position: relative;
   overflow: hidden;
   @include animate(.75s);
@@ -126,11 +126,12 @@ $image-url : '../../images/';
       line-height: 33px;
       margin: 0 5px;
       @include animate(.35s);
-      background: $primary-white;
-      color: rgba(234,160,1,.8);
+      background: $transparent;
+      color: #fff;
       &:hover {
-        background: $transparent;
-        color: #fff;
+  
+        background: $primary-white;
+      color: rgba(234,160,1,.8);
       }
     }
   }
@@ -144,20 +145,26 @@ $image-url : '../../images/';
     }
 
     .btn-cart {
-      top: 33%;
+      top: 35%;
     }
 
     .product-options {
-      bottom: 33%;
+      bottom: 35%;
     }
   }
 
   .product-name {
     font-size: 15px;
     margin: 0;
-    padding: 10px 0;
+    padding: 10px 0 5px 0;
     line-height: 28px;
     @extend .truncate;
     max-width: 100%;
+  }
+
+  .product-price {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    line-height: 20px;
   }
 }

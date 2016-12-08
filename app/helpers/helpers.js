@@ -1,4 +1,3 @@
-Handlebars.registerHelper('noop', function(options) {
-  console.log(options)
-  return '<div>22</div>';
+Handlebars.registerHelper('productImageUrl', function(image_ids, images) {
+  return images.find(function(elem){return elem.id == image_ids[0]}).large_url;
 });

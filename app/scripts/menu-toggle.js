@@ -1,9 +1,10 @@
 $(document).ready(function() {
-  $('.menu-toggle-btn').on('click', function() {
+
+  $('#wrapper').on('click', '.menu-toggle-btn', function() {
     $('.menu-container').addClass('expand');
   });
 
-  $('.main-search-btn').on('click', function() {
+  $('#wrapper').on('click', '.main-search-btn', function() {
     $('.search-bar').addClass('drop');
   });
 
@@ -22,4 +23,5 @@ $(document).ready(function() {
   $('.close-cart').on('click', function() {
     $('.cart-container').removeClass('expand');
   });
+
 });
