@@ -85,6 +85,35 @@ $image-url : '../../images/';
   }
 }
 
+.category-item {
+  a {
+    display: block;
+    position: relative;
+    &:hover {
+      .category-name {
+        height: 90px;
+        line-height: 90px;  
+      }
+    }
+  }
+
+  .category-name {
+    @include animate(.2s);
+    background: rgba(0,0,0,.5);
+    bottom: 0;
+    color: $primary-white;
+    font-size: 20px;
+    height: 60px;
+    left: 0;
+    line-height: 60px;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    z-index: 1;
+  }
+}
+
 .product-container {
   background: $primary-white;
   min-height: 290px;

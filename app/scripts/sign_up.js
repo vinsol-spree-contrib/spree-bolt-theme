@@ -16,3 +16,20 @@ $(document).ready(function() {
     $('#flash').html(message);
   };
 });
+
+$(document).ready(function() {
+  $('#wrapper').on('submit', '#login', function(event) {
+    (new SpreeApi.login()).sendRequest({params: {
+      user: {
+        email: $('#user-login-name').val(),
+        password: $('#user-login-password').val()
+      }
+    }, cb: handleLoginSuccess});
+    event.preventDefault();
+  });
+
+  function handleLoginSuccess(response) { 
+    var message = 'You have been successfully logged in.';
+    $('#flash').html(message);
+  };
+});

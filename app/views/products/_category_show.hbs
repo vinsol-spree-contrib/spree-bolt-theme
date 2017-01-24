@@ -17,7 +17,7 @@
                 <a href="javascript:void(0);">
                   <i class="material-icons">favorite</i>
                 </a>
-                <a href="javascript:void(0);">
+                <a href={{#productUrl id}}{{body}}{{/productUrl}}>
                   <i class="material-icons">remove_red_eye</i>
                 </a>
               </div>
@@ -35,25 +35,40 @@
       <span>Shop By Category</span>
     </h3>
 
-    <div class="row p-t-50">
-      <div class="col-md-6">
-        <img src="images/category_02.jpg" alt="" class="img-full">
+    <div class="row p-t-50 category-items">
+      <div class="col-md-6 category-item">
+        <a href="#">
+          <span class="category-name">Decor</span>
+          <img src="images/category_02.jpg" alt="" class="img-full">
+        </a>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 category-item">
         <div class="row">
           <div class="col-md-6">
-            <img src="images/category_01.jpg" alt="" class="img-full">
+            <a href="#">
+              <span class="category-name">Wall Decor</span>
+              <img src="images/category_01.jpg" alt="" class="img-full">
+            </a>
           </div>
-          <div class="col-md-6">
-            <img src="images/category_03.jpg" alt="" class="img-full">
+          <div class="col-md-6 category-item">
+            <a href="">
+              <span class="category-name">Wall Decor</span>
+              <img src="images/category_03.jpg" alt="" class="img-full">
+            </a>
           </div>
         </div>
         <div class="row p-t-30">
-          <div class="col-md-6">
-            <img src="images/category_04.jpg" alt="" class="img-full">
+          <div class="col-md-6 category-item">
+            <a href="#">
+              <span class="category-name">Bed Covers</span>
+              <img src="images/category_04.jpg" alt="" class="img-full">  
+            </a>
           </div>
-          <div class="col-md-6">
-            <img src="images/category_05.jpg" alt="" class="img-full">
+          <div class="col-md-6 category-item">
+            <a href="#">
+              <span class="category-name">Furniture</span>
+              <img src="images/category_05.jpg" alt="" class="img-full">
+            </a>
           </div>
         </div>
       </div>
@@ -80,7 +95,7 @@
                 <a href="javascript:void(0);">
                   <i class="material-icons">favorite</i>
                 </a>
-                <a href="javascript:void(0);">
+                <a href={{#productUrl id}}{{body}}{{/productUrl}}>
                   <i class="material-icons">remove_red_eye</i>
                 </a>
               </div>
@@ -88,30 +103,6 @@
           </div>
         </div>
       {{/each}}
-    </div>
-  </div>
-</section>
-
-<section class="category-section-all">
-  <div class="container">
-    <h3 class="decorated-heading text-center">
-      <span>Shop By Category</span>
-    </h3>
-
-    <div class="row p-t-50">
-      <div class="col-md-6">
-        <img src="images/category_02.jpg" alt="" class="img-full">
-      </div>
-      <div class="col-md-6">
-        <div class="row">
-          <div class="col-md-12">
-            <img src="images/category_06.jpg" alt="" class="img-full">
-          </div>
-          <div class="col-md-12 p-t-30">
-            <img src="images/category_07.jpg" alt="" class="img-full">
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>

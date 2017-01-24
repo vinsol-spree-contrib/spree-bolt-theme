@@ -1,0 +1,102 @@
+$image-url : '../../images/';
+
+.footer-logo {
+  min-width: 150px;
+  a {
+    color: $primary-border;
+    display: inline-block;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 25px;
+  }
+}
+
+.primary-footer {
+  border-top: solid 1px $primary-border;
+  padding: 50px 0 40px 0;
+  background: $secondary-black;
+  .decorated-heading {
+    font-size: 18px;
+    margin: 0 0 15px 0;
+    color: $primary-white;
+    span:before {
+      bottom: 0;
+      width: 40px;
+    }
+  }
+}
+
+.footer-nav {
+  li {
+    a {
+      color: $primary-border;
+      &:hover {
+        color: $primary-hover;
+      }
+    }
+    + li {
+      margin-top: 7px;
+    }
+  }
+}
+
+.social {
+  margin: 15px 0;
+}
+
+.social-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+
+  + .social-icon {
+    margin-left: 5px;
+  }
+
+  a {
+    background: url($image-url + 'social.png') no-repeat;
+    background-size: 120px;
+    display: block;
+    height: 30px;
+    width: 30px;
+    background-position: 0 1px;
+    @include animate(.25s);
+    &:hover {
+      background-position: 0 -29px;
+    }
+  }
+
+  &.twitter {
+    a {
+      background-position: -30px 1px;
+      &:hover {
+        background-position: -30px -29px;
+      }
+    }
+  }
+
+  &.instagram {
+    a {
+      background-position: -60px 1px;
+      &:hover {
+        background-position: -60px -29px;
+      }
+    }
+  }
+
+  &.youtube {
+    a {
+      background-position: -90px 1px;
+      &:hover {
+        background-position: -90px -29px;
+      }
+    }
+  }
+
+}
+
+.payment-options {
+  img {
+    width: 145px;
+    height: auto;
+  }
+}
