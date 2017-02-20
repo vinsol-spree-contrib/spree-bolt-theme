@@ -20,10 +20,22 @@
   transition: $duration;
   -moz-transition: $duration;
   -webkit-transition: $duration;
+  -o-transition: $duration;
+  -ms-transition: $duration;
 }
 
 @mixin box-shadow($first, $second, $third, $fourth, $color) {
   box-shadow: $first $second $third $fourth $color;
   -moz-box-shadow: $first $second $third $fourth $color;
   -webkit-box-shadow: $first $second $third $fourth $color;
+  -o-box-shadow: $first $second $third $fourth $color;
+  -ms-box-shadow: $first $second $third $fourth $color;
+}
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -o-border-radius: $radius;
+  -ms-border-radius: $radius;
 }

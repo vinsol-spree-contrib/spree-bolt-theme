@@ -8,19 +8,19 @@ $(document).ready(function() {
     $('.search-bar').addClass('drop');
   });
 
-  $('.close-menu').on('click', function() {
+  $('#wrapper').on('click', '.close-menu', function() {
     $('.menu-container').removeClass('expand');
   });
 
-  $('.close-search').on('click', function() {
+  $('#wrapper').on('click', '.close-search', function() {
     $('.search-bar').removeClass('drop');
   });
 
-  $('.cart-icon').on('click', function() {
+  $('#wrapper').on('click', '.cart-icon', function() {
     $('.cart-container').addClass('expand');
   });
 
-  $('.close-cart').on('click', function() {
+  $('#wrapper').on('click', '.close-cart', function() {
     $('.cart-container').removeClass('expand');
   });
 

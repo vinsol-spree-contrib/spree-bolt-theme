@@ -1,0 +1,87 @@
+.checkout-steps {
+  padding: 75px 0;
+  background: $secondary-white;
+  .container {
+    width: 980px;
+  }
+}
+
+.checkout-step {
+  background: $primary-white;
+  padding: 20px;
+  position: relative;
+  @include border-radius(4px);
+  box-shadow: 0px 0px 20px 0px #ddd;
+  +.checkout-step {
+    margin-top: 25px; 
+  }
+
+  .h2 {
+    margin: 0;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  .light-text {
+    display: block;
+    text-transform: none;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .step-number {
+    @include border-radius(50%);
+    align-items: center;
+    background: $primary-hover;
+    color: $primary-white;
+    display: flex;
+    font-size: 16px;
+    height: 30px;
+    justify-content: center;
+    left: -15px;
+    position: absolute;
+    top: 15px;
+    width: 30px;
+  }
+}
+
+.checkout-step-inner {
+  padding: 20px 0;
+  .btn-action {
+    height: 45px;
+    line-height: 43px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.or-selection {
+  align-items: center;
+  color: $text-light;
+  display: flex;
+  font-size: 20px;
+  height: 165px;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+
+  &:before, &:after {
+    background: lighten($text-light, 25%);
+    content: ' ';
+    height: 50px;
+    left: 50%;
+    margin-left: -1px;
+    position: absolute;
+    top: 10px;
+    width: 2px;
+    z-index: 1;
+  }
+
+  &:after {
+    top: auto;
+    bottom: 10px;
+  }
+}

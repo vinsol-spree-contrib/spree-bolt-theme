@@ -13,8 +13,15 @@ function renderCategoryProductsPage(responseText) {
 };
 
 function renderProductShowPage(responseText) {
-  debugger
   document.querySelector('#wrapper').innerHTML = MyApp.html.show({product: responseText.product, productProperties: responseText.product_properties, images: responseText['images']});
+};
+
+function renderCart() {
+  document.querySelector('#wrapper').innerHTML = MyApp.html.cart();
+};
+
+function renderCheckout() {
+  document.querySelector('#wrapper').innerHTML = MyApp.html.checkout();
 };
 
 function renderTemplate() {
@@ -27,6 +34,10 @@ function renderTemplate() {
     case 'product' : (new SpreeApi.productShow()).sendRequest({cb: renderProductShowPage, params: { id: id }});
     break;
     case 'category_products' : (new SpreeApi.productsList()).sendRequest({cb: renderCategoryProductsPage, params: { q: { taxons_taxonomy_id_eq: category_id }}});
+    break;
+    case 'cart' : (new SpreeApi.productsList()).sendRequest({cb: renderCart});
+    break;
+    case 'checkout' : (new SpreeApi.productsList()).sendRequest({cb: renderCheckout});
     break;
     default : (new SpreeApi.productsList()).sendRequest({cb: renderIndexPage});
   }

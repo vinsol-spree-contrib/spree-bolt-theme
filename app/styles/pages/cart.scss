@@ -1,0 +1,26 @@
+.empty-cart-container {
+  padding-top: 100px;
+
+  .btn-action {
+    height: 50px;
+    line-height: 48px;
+  }
+
+  .light-text {
+    margin: 20px 0;
+  }
+
+  .empty-cart-icon {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    @include border-radius(50%);
+    border: 1px dashed $text-light;
+
+    i {
+      color: lighten($text-light, 25%);
+      @include genericStyles('font-size', 98px);
+    }
+  }
+
+}
