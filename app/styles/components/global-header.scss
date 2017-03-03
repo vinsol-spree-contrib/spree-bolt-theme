@@ -4,7 +4,10 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 3;
+  z-index: 10;
+  transition: top .2s;
+  -moz-transition: top .2s;
+  -webkit-transition: top .2s;
 }
 
 .logo {
@@ -21,22 +24,44 @@
 }
 
 .menu-toggle-btn {
-  @include genericSidesStyles('top', 13px, 'margin');
   color: $primary-black;
-  display: inline-block;
   font-size: 14px;
   text-transform: uppercase;
+  position: fixed;
+  left: 31px;
+  top: 15px;
 }
 
 .cart-icon {
-  @include genericSidesStyles('top', 12px, 'margin');
   display: inline-block;
+  position: fixed;
+  right: 31px;
+  top: 16px;
+}
+
+.menu-toggle-btn,
+.cart-icon {
+  transition: top .2s;
+  -moz-transition: top .2s;
+  -webkit-transition: top .2s;  
 }
 
 .header-bottom {
   @include genericSidesStyles('bottom', 1px solid $primary-border, 'border');
-  height: 40px;
+  min-height: 40px;
   padding: 0 15px;
+}
+
+.main-search-btn {
+  transition: margin-left .2s;
+  -moz-transition: margin-left .2s;
+  -webkit-transition: margin-left .2s;
+}
+
+.login-btn {
+  transition: margin-right .2s;
+  -moz-transition: margin-right .2s;
+  -webkit-transition: margin-right .2s;
 }
 
 .main-search-btn,
@@ -52,5 +77,29 @@
 .login-btn {
   .material-icons {
     margin-right: 3px;
+  }
+}
+
+.header-up {
+  .primary-header {
+    top: -74px;
+  }
+
+  .main-search-btn {
+    margin-left: 60px;
+  }
+
+  .login-btn {
+    margin-right: 50px;
+  }
+
+  .menu-toggle-btn {
+    top: 10px;
+    z-index: 1;
+  }
+
+  .cart-icon {
+    top: 8px;
+    z-index: 1;
   }
 }

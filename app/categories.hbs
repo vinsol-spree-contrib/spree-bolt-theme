@@ -1,7 +1,15 @@
-<ul>
-  {{#each categories}}
-    <li>
-      <a href={{#productCategoryUrl id}}{{body}}{{/productCategoryUrl}}>{{name}}</a>
-    </li>
-  {{/each}}
-</ul>
+{{> header}}
+
+<div class="container">
+  <ul>
+    {{#each categories}}
+      {{#if parent_id}}
+        <li class="col-md-4">
+          <a href={{#productCategoryUrl id}}{{body}}{{/productCategoryUrl}}>{{name}}</a>
+        </li>
+      {{/if}}
+    {{/each}}
+  </ul>
+</div>
+
+{{> header}}

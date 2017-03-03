@@ -1,0 +1,30 @@
+.newsletter {
+  background: $primary-hover;
+  min-height: 74px;
+
+  .flex {
+    height: 74px;
+  }
+
+  .clearfix {
+    margin-top: 5px;
+  }
+
+  p {
+    color: $primary-white;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .form-group, label {
+    margin: 0;
+    padding: 0;
+  }
+
+  .form-control {
+    border: 0;
+    height: 40px;
+    @include border-radius(0);
+  }
+}

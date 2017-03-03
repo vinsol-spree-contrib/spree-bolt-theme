@@ -5,7 +5,7 @@ function renderIndexPage(responseText) {
 };
 
 function renderCategoryPage(responseText) {
-  document.querySelector('#wrapper').innerHTML = MyApp.html.categories({categories: responseText['taxonomies']});
+  document.querySelector('#wrapper').innerHTML = MyApp.html.categories({categories: responseText['taxons']});
 };
 
 function renderCategoryProductsPage(responseText) {
@@ -14,6 +14,10 @@ function renderCategoryProductsPage(responseText) {
 
 function renderProductShowPage(responseText) {
   document.querySelector('#wrapper').innerHTML = MyApp.html.show({product: responseText.product, productProperties: responseText.product_properties, images: responseText['images']});
+};
+
+function renderAllProductsPage(responseText) {
+  document.querySelector('#wrapper').innerHTML = MyApp.html.products({product: responseText.product, images: responseText['images']});
 };
 
 function renderCart() {
@@ -38,6 +42,8 @@ function renderTemplate() {
     case 'cart' : (new SpreeApi.productsList()).sendRequest({cb: renderCart});
     break;
     case 'checkout' : (new SpreeApi.productsList()).sendRequest({cb: renderCheckout});
+    break;
+    case 'products' : (new SpreeApi.productsList()).sendRequest({cb: renderAllProductsPage});
     break;
     default : (new SpreeApi.productsList()).sendRequest({cb: renderIndexPage});
   }

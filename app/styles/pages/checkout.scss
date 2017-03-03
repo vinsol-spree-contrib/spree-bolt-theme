@@ -7,7 +7,7 @@
 }
 
 .checkout-step {
-  background: $primary-white;
+  background: #f9f9f9;
   padding: 20px;
   position: relative;
   @include border-radius(4px);
@@ -62,7 +62,7 @@
   color: $text-light;
   display: flex;
   font-size: 20px;
-  height: 165px;
+  height: 175px;
   justify-content: center;
   position: relative;
   text-align: center;
