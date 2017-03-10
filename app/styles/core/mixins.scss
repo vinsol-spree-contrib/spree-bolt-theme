@@ -39,3 +39,11 @@
   -o-border-radius: $radius;
   -ms-border-radius: $radius;
 }
+
+@mixin rotate($degree) {
+  transform: rotate($degree);
+  -moz-transform: rotate($degree);
+  -webkit-transform: rotate($degree);
+  -o-transform: rotate($degree);
+  -ms-transform: rotate($degree);
+}

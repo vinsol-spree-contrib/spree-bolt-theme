@@ -83,6 +83,10 @@ $image-url : '../../images/';
     left: 50%;
     margin-left: -30px;
   }
+
+  &.category-page {
+    padding: 10px 0;
+  }
 }
 
 .category-item {
@@ -126,7 +130,7 @@ $image-url : '../../images/';
     @extend .full-absolute;
     opacity: 0;
     visibility: hidden;
-    background: rgba(234,160,1,.8);
+    background: rgba(244, 209, 26, .8);
     @include animate(.75s cubic-bezier(0.5,1,0.05,1.0));
   }
 
@@ -135,6 +139,9 @@ $image-url : '../../images/';
     position: absolute;
     left: 50%;
     margin: 0 0 0 -75px;
+    &:hover {
+      color: rgba(244, 209, 26, .8);
+    }
   }
 
   .product-options {
@@ -158,9 +165,8 @@ $image-url : '../../images/';
       background: $transparent;
       color: #fff;
       &:hover {
-  
         background: $primary-white;
-      color: rgba(234,160,1,.8);
+        color: rgba(244, 209, 26, .8);
       }
     }
   }

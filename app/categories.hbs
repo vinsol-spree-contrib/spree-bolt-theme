@@ -1,10 +1,14 @@
 {{> header}}
 
-<div class="container">
+<div class="container category-section-all category-page">
+  <h1 class="decorated-heading text-center">
+    <span>Shop By Category</span>
+  </h1>
   <ul>
     {{#each categories}}
       {{#if parent_id}}
         <li class="col-md-4">
+          <img src="../images/category_{{id}}.jpg" />
           <a href={{#productCategoryUrl id}}{{body}}{{/productCategoryUrl}}>{{name}}</a>
         </li>
       {{/if}}
@@ -12,4 +16,4 @@
   </ul>
 </div>
 
-{{> header}}
+{{> footer}}

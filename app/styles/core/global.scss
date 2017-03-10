@@ -1,3 +1,7 @@
+*:focus {
+  outline: none;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
@@ -9,6 +13,7 @@ a {
   &:focus,
   &:hover,
   &:active {
+    color: inherit;
     text-decoration: none;
   }
   &:hover {
@@ -141,7 +146,7 @@ ul {
 }
 
 .btn-view-all {
-  line-height: 36px;
+  line-height: 37px;
   font-size: 14px;
 }
 
@@ -173,6 +178,7 @@ ul {
 
 .form-control {
   height: 45px;
+  @include border-radius(0);
   &:focus {
     border-color: $primary-hover;
     box-shadow: inset 0 1px 1px rgba(234, 160, 1, 0.075), 0 0 8px rgba(234, 160, 1, 0.6);
@@ -193,4 +199,116 @@ ul {
 
 .align-center {
   align-items: center;
+}
+
+.full-width {
+  display: block;
+  width: 100%;
+}
+
+::-webkit-input-placeholder {
+  color: $primary-black!important;
+  font-family: 'Montserrat-Light';
+  font-weight: 100;
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+:-moz-placeholder {
+  color: $primary-black!important;
+  font-family: 'Montserrat-Light';
+  font-weight: 100;
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  color: $primary-black!important;
+  font-family: 'Montserrat-Light';
+  font-weight: 100;
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: $primary-black!important;
+  font-family: 'Montserrat-Light';
+  font-weight: 100;
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+.modal-dialog.modal-md {
+  width: 350px;
+}
+
+.modal-dialog {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%)!important;
+  -moz-transform: translate(-50%, -50%)!important;
+  -webkit-transform: translate(-50%, -50%)!important;
+}
+
+.modal-content {
+  @include border-radius(0);
+}
+
+.modal-header {
+  background: $primary-white;
+  color: $primary-black;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+
+  .close {
+    color: $primary-white;
+    opacity: 1;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: $primary-black;
+    @include border-radius(50%)
+    right: -9px;
+    top: -8px;
+    text-align: center;
+    font-size: 16px;
+  }
+}
+
+.color-yellow {
+  color: $primary-hover;
+}
+
+.input-group-addon {
+  @include border-radius(0);
+  background: $primary-hover;
+  padding: 5px 10px;
+  border: 0;
+  color: $primary-black;
+  font-size: 16px;
+}
+
+.input-group-addon + .form-control {
+  border-left: 0;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.modal-footer {
+  background: $primary-black!important;
+  color: $primary-white;
+}
+
+.modal-backdrop.in {
+  background: $primary-white;
+  opacity: .85;
+}
+
+.modal-content {
+  border: 0;
 }
