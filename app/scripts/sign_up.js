@@ -1,4 +1,18 @@
 import { SpreeApi } from './../../bower_components/spree-frontend-integration/lib/index';
+import Handlebars from './../../.tmp/scripts/handlebars.runtime.js'
+import getCookie from './cookie'
+
+Handlebars.registerHelper('is_logged_in', function(fn) {
+  return getCookie('auth_tokens').length != 0
+});
+
+// Handlebars.registerHelper('currentOrder', function(fn) {
+//   localStorage.setItem('order', 'response')
+//   (new SpreeApi.currentOrder()).sendRequest({cb: test})
+//   function test(response){
+//     localStorage.setItem('order', response)
+//   }
+// });
 
 $(document).ready(function() {
   $('#wrapper').on('submit', '#sign-up', function(event) {

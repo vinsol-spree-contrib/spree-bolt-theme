@@ -1,4 +1,5 @@
 import { SpreeApi } from './../../bower_components/spree-frontend-integration/lib/index';
+import { getCookie, setCookie } from './cookie'
 
 function renderIndexPage(responseText) {
   document.querySelector('#wrapper').innerHTML = MyApp.html.index({products: responseText['products'], images: responseText['images']});
@@ -28,7 +29,15 @@ function renderCheckout() {
   document.querySelector('#wrapper').innerHTML = MyApp.html.checkout();
 };
 
+function createOrder(response) {
+  setCookie('orderId', response['order']['number'])
+};
+
 function renderTemplate() {
+  // if(getCookie('orderId').length == 0){
+  //   (new SpreeApi.createOrder()).sendRequest({cb: createOrder});
+  // }
+
   var path = window.location.pathname.split('/')[1],
       id = window.location.pathname.split('/')[2],
       category_id = window.location.pathname.split('/')[2];

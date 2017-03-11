@@ -1,5 +1,5 @@
 .search-bar {
-  position: absolute;
+  position: fixed;
   top: 0;
   height: 114px;
   top: -114px;
@@ -10,7 +10,7 @@
   opacity: 0;
   @include animate(.75s cubic-bezier(0.5,1,0.05,1.0));
   @include box-shadow(0,0,5px,0,$primary-border);
-
+  z-index: 11;
   .close-search {
     position: absolute;
     top: 7px;
