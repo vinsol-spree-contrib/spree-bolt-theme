@@ -161,7 +161,7 @@ ul {
 .btn-dark {
   background: $primary-black;
   &:hover, &:focus {
-    background: lighten($primary-black, 30%);
+    background: lighten($primary-black, 25%);
     color: $primary-white;
   }
 }
@@ -282,6 +282,10 @@ ul {
   color: $primary-hover;
 }
 
+.color-dark {
+  color: $primary-black;
+}
+
 .input-group-addon {
   @include border-radius(0);
   background: $primary-hover;
@@ -311,4 +315,23 @@ ul {
 
 .modal-content {
   border: 0;
+}
+
+#flash {
+  @include animate(.25s);
+  background: $primary-success;
+  color: $primary-white;
+  max-width: 300px;
+  padding: 10px;
+  position: fixed;
+  right: 6px;
+  text-align: center;
+  top: -50px;
+  z-index: 1000;
+  &:empty {
+    padding: 0;
+  }
+  &.slide-down {
+    top: 6px;
+  }
 }

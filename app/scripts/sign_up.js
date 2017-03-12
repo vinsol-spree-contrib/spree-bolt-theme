@@ -27,7 +27,10 @@ $(document).ready(function() {
 
   function handleSuccess(response) { 
     var message = 'Your account has been successfully created. Please Login to continue.';
-    $('#flash').html(message);
+    $('#flash').addClass('slide-down').html(message);
+    setTimeout(function() {
+      $('#flash').removeClass('slide-down').html('');
+    },10000);
   };
 });
 
@@ -44,6 +47,6 @@ $(document).ready(function() {
 
   function handleLoginSuccess(response) { 
     var message = 'You have been successfully logged in.';
-    $('#flash').html(message);
+    $('#flash').html(message).css('top', '6px');
   };
 });
