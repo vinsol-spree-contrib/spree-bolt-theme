@@ -107,7 +107,7 @@ ul {
   .row-5px {
     margin: 0 -5px;
     .col-5px {
-      padding: 0 5px;
+      padding: 5px;
     }
   }
 }
@@ -233,33 +233,37 @@ ul {
 ::-webkit-input-placeholder {
   color: $primary-black!important;
   font-family: 'Montserrat-Light';
+  font-size: 12px;
   font-weight: 100;
-  text-transform: uppercase;
   opacity: 1;
+  text-transform: uppercase;
 }
 
 :-moz-placeholder {
   color: $primary-black!important;
   font-family: 'Montserrat-Light';
+  font-size: 12px;
   font-weight: 100;
-  text-transform: uppercase;
   opacity: 1;
+  text-transform: uppercase;
 }
 
 ::-moz-placeholder {
   color: $primary-black!important;
   font-family: 'Montserrat-Light';
+  font-size: 12px;
   font-weight: 100;
-  text-transform: uppercase;
   opacity: 1;
+  text-transform: uppercase;
 }
 
 :-ms-input-placeholder {
   color: $primary-black!important;
   font-family: 'Montserrat-Light';
+  font-size: 12px;
   font-weight: 100;
-  text-transform: uppercase;
   opacity: 1;
+  text-transform: uppercase;
 }
 
 .modal-dialog.modal-md {
