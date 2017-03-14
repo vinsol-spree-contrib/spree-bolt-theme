@@ -28,8 +28,10 @@ $image-url : '../../images/';
   li {
     a {
       color: $primary-border;
+      @include animate(.25s);
       &:hover {
         color: $primary-hover;
+        padding-left: 5px;
       }
     }
     + li {

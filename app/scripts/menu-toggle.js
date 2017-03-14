@@ -30,16 +30,31 @@ $(window).on('load', function() {
 
   $('body').on('click', '.continue-shopping', function() {
     $('.cart-container').removeClass('expand');
-    $('html, body').animate({scrollTop: $('.category-section').offset().top - 115}, 500);
+    $('html, body').animate({scrollTop: $('.category-section').offset().top - 40}, 500);
+  });
+
+  $('body').on('click', '.scroll-top', function() {
+    $('html,body').animate({scrollTop: 0}, 500);
+  });
+
+  $('body').on('click', '.show-code', function() {
+    $('.coupon-form').slideToggle(200);
   });
 
 });
 
-$(window).on('scroll', function() {
+$(window).on('load scroll', function() {
   if($(this).scrollTop() > 74) {
     $('body').addClass('header-up');
   }
   else {
     $('body').removeClass('header-up'); 
+  }
+
+  if($(this).scrollTop() > 200) {
+    $('.scroll-top').addClass('slide-up');
+  }
+  else {
+    $('.scroll-top').removeClass('slide-up'); 
   }
 });

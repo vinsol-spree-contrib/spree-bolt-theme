@@ -82,21 +82,25 @@
   .form-control::-webkit-input-placeholder {
     color: $primary-black;
     font-family: 'Montserrat-Light';
+    text-transform: none;
   }
 
   .form-control:-moz-placeholder {
     color: $primary-black;
     font-family: 'Montserrat-Light';
+    text-transform: none;
   }
 
   .form-control::-moz-placeholder {
     color: $primary-black;
     font-family: 'Montserrat-Light';
+    text-transform: none;
   }
 
   .form-control:-ms-input-placeholder {  
     color: $primary-black;
     font-family: 'Montserrat-Light';
+    text-transform: none;
   }
 
 }
