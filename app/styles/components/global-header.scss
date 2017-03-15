@@ -58,7 +58,8 @@
   -webkit-transition: margin-left .2s;
 }
 
-.login-btn {
+.login-btn,
+.my-profile {
   transition: margin-right .2s;
   -moz-transition: margin-right .2s;
   -webkit-transition: margin-right .2s;
@@ -91,7 +92,8 @@
     top: 2px;
   }
 
-  .login-btn {
+  .login-btn,
+  .my-profile {
     margin-right: 75px;
   }
 
@@ -103,5 +105,49 @@
   .cart-icon {
     top: 8px;
     z-index: 1;
+  }
+}
+
+.my-profile {
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  .sub-menu {
+    position: absolute;
+    right: -10px;
+    top: 40px;
+    width: 120px;
+    background: $primary-white;
+    visibility: hidden;
+    opacity: 0;
+    top: 50px;
+    @include animate(.25s);
+    li {
+      line-height: 35px;
+      height: 35px;
+    }
+    a {
+      display: block;
+      width: 100%;
+      height: 35px;
+      line-height: 35px;
+      padding: 0 10px;
+      font-size: 14px;
+      &:hover {
+        background: $primary-hover;
+        color: $primary-white;
+      }
+    }
+  }
+  > li {
+    display: inline-block;
+    &:hover {
+      color: $primary-hover;
+      .sub-menu {
+        opacity: 1;
+        visibility: visible;
+        top: 40px;
+      }
+    }
   }
 }

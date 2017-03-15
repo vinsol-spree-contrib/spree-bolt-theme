@@ -1,5 +1,6 @@
 import { SpreeApi } from './../../bower_components/spree-frontend-integration/lib/index';
 import Handlebars from './../../.tmp/scripts/handlebars.runtime.js'
+import Tea from './vendor/tea'
 import getCookie from './cookie'
 
 // Handlebars.registerHelper('currentOrder', function(fn) {
@@ -30,7 +31,17 @@ $(document).ready(function() {
   };
 });
 
+function deleteAllCookies(cookieName) {
+  document.cookie = cookieName + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+}
+
 $(document).ready(function() {
+
+  $('body').on('click', '#logout', function() {
+    deleteAllCookies('auth_token');
+    location.reload();
+  });
+
   $('#wrapper').on('submit', '#login', function(event) {
     (new SpreeApi.login()).sendRequest({params: {
       user: {

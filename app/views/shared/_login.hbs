@@ -1,5 +1,14 @@
 {{#isLoggedIn}}
-  <a href="javascript:void(0);">Logout</a>
+  <ul class="my-profile">
+    <li>
+      <span><i class="material-icons vertical-middle">face</i> Profile</span>
+      <ul class="sub-menu text-right">
+        <li><a href="#">My orders</a></li>
+        <li><a href="#">My account</a></li>
+        <li><a href="#" id="logout">Logout</a></li> 
+      </ul>
+    </li>
+  </ul>
 {{else}}
   <a href="#login-modal" data-toggle="modal" class="login-btn">
     <i class="material-icons vertical-middle">person</i>
