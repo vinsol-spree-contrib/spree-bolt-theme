@@ -2,10 +2,6 @@ import { SpreeApi } from './../../bower_components/spree-frontend-integration/li
 import Handlebars from './../../.tmp/scripts/handlebars.runtime.js'
 import getCookie from './cookie'
 
-Handlebars.registerHelper('is_logged_in', function(fn) {
-  return getCookie('auth_tokens').length != 0
-});
-
 // Handlebars.registerHelper('currentOrder', function(fn) {
 //   localStorage.setItem('order', 'response')
 //   (new SpreeApi.currentOrder()).sendRequest({cb: test})
@@ -47,6 +43,7 @@ $(document).ready(function() {
 
   function handleLoginSuccess(response) { 
     var message = 'You have been successfully logged in.';
+    location.reload();
     $('#flash').html(message).css('top', '6px');
   };
 });
