@@ -50,6 +50,9 @@
   @include genericSidesStyles('bottom', 1px solid $primary-border, 'border');
   min-height: 40px;
   padding: 0 15px;
+  .nav {
+    position: relative;
+  }
 }
 
 .main-search-btn {
@@ -133,6 +136,7 @@
       line-height: 35px;
       padding: 0 10px;
       font-size: 14px;
+      @include animate(.25s);
       &:hover {
         background: $primary-hover;
         color: $primary-white;

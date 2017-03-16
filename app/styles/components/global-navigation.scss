@@ -4,9 +4,7 @@
     height: 40px;
     line-height: 40px;
     position: relative;
-    + .nav-item {
-      @include genericSidesStyles('left', 25px, 'margin');
-    }
+    margin: 0 12px;
 
     &:hover, &:focus {
       .nav-item-anchor {

@@ -1,19 +1,28 @@
 {{> header}}
+{{> search}}
+{{> login_form}}
+{{> signup_form}}
+{{> menu_container}}
 
-<div class="container category-section-all category-page">
-  <h1 class="decorated-heading text-center">
-    <span>Shop By Category</span>
-  </h1>
-  <ul>
-    {{#each categories}}
-      {{#if parent_id}}
-        <li class="col-md-4">
-          <img src="../images/category_{{id}}.jpg" />
-          <a href={{#productCategoryUrl id}}{{body}}{{/productCategoryUrl}}>{{name}}</a>
-        </li>
-      {{/if}}
-    {{/each}}
-  </ul>
-</div>
-
+<section class="category-page-wrapper">
+  <div class="container category-section-all category-page">
+    <h1 class="decorated-heading text-center">
+      <span class="text-uppercase">Shop By Category</span>
+    </h1>
+    <ul class="categorie-list clearfix text-center">
+      {{#each categories}}
+        {{#if parent_id}}
+          <li class="col-md-4 single-category {{toLowerCase name}}">
+            <a href="#" class="block">
+              <img src="../images/category_{{id}}.jpg" class="img-full" />
+              <h3 class="category-name">{{name}}</h3>
+            </a>
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</section>
+{{> newsletter}}
+{{> scroll_top}}
 {{> footer}}

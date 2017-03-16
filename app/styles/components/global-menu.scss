@@ -1,6 +1,6 @@
 .menu-container,
 .cart-container {
-  @include animate(.75s cubic-bezier(0.5,1,0.05,1.0));
+  @include animate(.75s cubic-bezier(0.5,1,0.5,1.05));
   @include box-shadow(0,0,5px,0,$primary-border);
   background: #ffffff;
   height: 100%;
