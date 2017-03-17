@@ -12,7 +12,7 @@
     <ul class="categorie-list clearfix text-center">
       {{#each categories}}
         {{#if parent_id}}
-          <li class="col-md-4 single-category {{toLowerCase name}}">
+          <li class="col-md-4 single-category">
             <a href="#" class="block">
               <img src="../images/category_{{id}}.jpg" class="img-full" />
               <h3 class="category-name">{{name}}</h3>
@@ -23,6 +23,7 @@
     </ul>
   </div>
 </section>
+
 {{> newsletter}}
 {{> scroll_top}}
 {{> footer}}

@@ -41,6 +41,11 @@ $(window).on('load', function() {
     $('.coupon-form').slideToggle(200);
   });
 
+  $('body').on('click', '.single-order-detail .panel-heading', function() {
+    $(this).closest('.single-order-detail').toggleClass('active');
+    $(this).closest('.single-order-detail').siblings('.single-order-detail').removeClass('active');
+  });
+
 });
 
 $(window).on('load scroll', function() {

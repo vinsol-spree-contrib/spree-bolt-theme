@@ -1,5 +1,5 @@
 import { SpreeApi } from './../../bower_components/spree-frontend-integration/lib/index';
-import { getCookie, setCookie } from './cookie'
+import { getCookie, setCookie } from './cookie';
 
 function renderIndexPage(responseText) {
   document.querySelector('#wrapper').innerHTML = MyApp.html.index({products: responseText['products'], images: responseText['images']});
@@ -21,8 +21,16 @@ function renderAllProductsPage(responseText) {
   document.querySelector('#wrapper').innerHTML = MyApp.html.products({product: responseText.product, images: responseText['images']});
 };
 
+function renderMyOrders(responseText) {
+  document.querySelector('#wrapper').innerHTML = MyApp.html.my_orders({orders: responseText});
+};
+
 function renderCart() {
   document.querySelector('#wrapper').innerHTML = MyApp.html.cart();
+};
+
+function renderProfile() {
+  document.querySelector('#wrapper').innerHTML = MyApp.html.my_profile();
 };
 
 function renderCheckout() {
@@ -52,10 +60,16 @@ function renderTemplate() {
     break;
     case 'checkout' : (new SpreeApi.productsList()).sendRequest({cb: renderCheckout});
     break;
+    case 'my_orders' : (new SpreeApi.productsList()).sendRequest({cb: renderMyOrders})
+    break;
     case 'products' : (new SpreeApi.productsList()).sendRequest({cb: renderAllProductsPage});
+    break;
+    case 'my_profile' : (new SpreeApi.productsList()).sendRequest({cb: renderProfile});
     break;
     default : (new SpreeApi.productsList()).sendRequest({cb: renderIndexPage});
   }
 }
 
 renderTemplate();
+
+// (new SpreeApi.myOrders()).sendRequest({cb: renderMyOrders, path: '/api/orders/mine'});

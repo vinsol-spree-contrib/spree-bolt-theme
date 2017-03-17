@@ -1,2 +1,94 @@
+{{> search}}
 {{> header}}
+{{> login_form}}
+{{> signup_form}}
+{{> menu_container}}
+{{> cart}}
+
+<section class="orders-page-wrapper">
+  <div class="container">
+    <h1 class="decorated-heading text-center">
+      <span class="text-uppercase">My Orders</span>
+    </h1>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 orders-inner">
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+          <div class="panel single-order-detail active">
+            <div class="panel-heading order-header" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  R931214321
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <ul>
+                  <li><b>Date :</b> <span>17/03/17</span></li>
+                  <li><b>Status: </b><span>Complete</span></li>
+                  <li><b>Payment State: </b><span>Balance Due</span></li>
+                  <li><b>Shipment State: </b><span>Pending</span></li>
+                  <li><b>Total:</b><span>$63.63</span></li>
+                </ul>
+                <a href="#" class="btn-action btn-dark">View Summary</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel single-order-detail">
+            <div class="panel-heading order-header" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                  R931214322
+                </a>
+              </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+                <ul>
+                  <li><b>Date :</b> <span>17/03/17</span></li>
+                  <li><b>Status: </b><span>Complete</span></li>
+                  <li><b>Payment State: </b><span>Balance Due</span></li>
+                  <li><b>Shipment State: </b><span>Pending</span></li>
+                  <li><b>Total:</b><span>$63.63</span></li>
+                </ul>
+                <a href="#" class="btn-action btn-dark">View Summary</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel single-order-detail">
+            <div class="panel-heading order-header" role="tab" id="headingThree">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                  R931214323
+                </a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+              <div class="panel-body">
+                <ul>
+                  <li><b>Date :</b> <span>17/03/17</span></li>
+                  <li><b>Status: </b><span>Complete</span></li>
+                  <li><b>Payment State: </b><span>Balance Due</span></li>
+                  <li><b>Shipment State: </b><span>Pending</span></li>
+                  <li><b>Total:</b><span>$63.63</span></li>
+                </ul>
+                <a href="#" class="btn-action btn-dark">View Summary</a>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{{> newsletter}}
+{{> scroll_top}}
 {{> footer}}
