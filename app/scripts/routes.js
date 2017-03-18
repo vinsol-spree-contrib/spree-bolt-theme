@@ -60,7 +60,7 @@ function renderTemplate() {
     break;
     case 'checkout' : (new SpreeApi.productsList()).sendRequest({cb: renderCheckout});
     break;
-    case 'my_orders' : (new SpreeApi.productsList()).sendRequest({cb: renderMyOrders})
+    case 'my_orders' : (new SpreeApi.myOrders()).sendRequest({cb: renderMyOrders, path: '/api/ams/orders', method: 'GET'})
     break;
     case 'products' : (new SpreeApi.productsList()).sendRequest({cb: renderAllProductsPage});
     break;
