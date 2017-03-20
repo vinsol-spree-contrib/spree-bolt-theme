@@ -2,6 +2,7 @@ import { SpreeApi } from './../../bower_components/spree-frontend-integration/li
 import { getCookie, setCookie } from './cookie';
 
 function renderIndexPage(responseText) {
+  debugger
   document.querySelector('#wrapper').innerHTML = MyApp.html.index({products: responseText['products'], images: responseText['images']});
 };
 
@@ -22,7 +23,8 @@ function renderAllProductsPage(responseText) {
 };
 
 function renderMyOrders(responseText) {
-  document.querySelector('#wrapper').innerHTML = MyApp.html.my_orders({orders: responseText});
+  debugger
+  document.querySelector('#wrapper').innerHTML = MyApp.html.my_orders({addresses: responseText['addresses'], orders: responseText['orders'], line_items: responseText['line_items']});
 };
 
 function renderCart() {
@@ -71,5 +73,3 @@ function renderTemplate() {
 }
 
 renderTemplate();
-
-// (new SpreeApi.myOrders()).sendRequest({cb: renderMyOrders, path: '/api/orders/mine'});

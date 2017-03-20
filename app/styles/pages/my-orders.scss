@@ -4,13 +4,17 @@
   }
 
   .decorated-heading {
-    padding: 50px 0 20px 0;
+    padding: 40px 0 20px 0;
     margin: 0;
   }
 
   .decorated-heading span::before {
     left: 50%;
     margin-left: -30px;
+  }
+
+  .modal-body {
+    padding-bottom: 20px;
   }
 }
 
@@ -37,15 +41,18 @@
     }
 
     .btn-action {
-      position: absolute;
-      z-index: 1;
-      right: 15px;
       bottom: 15px;
+      font-size: 12px;
+      height: auto;
+      position: absolute;
+      right: 15px;
+      z-index: 1;
     }
 
     span {
       display: inline-block;
       margin-left: 3px;
+      text-transform: capitalize;
     }
   }
 
@@ -100,4 +107,24 @@
 
 .order-number {
   font-size: 18px;
+}
+
+.modal .order-number {
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: solid 1px $primary-border;
+}
+
+.modal h3 {
+  font-size: 16px;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 15px 0;
+}
+
+.address-container {
+  box-shadow: 0 0 10px $primary-border;
+  padding: 15px;
+  line-height: 25px;
+  font-weight: 100;
 }
