@@ -30,19 +30,21 @@ Handlebars.registerHelper('formatDate', function(date) {
   return new Date(date).toDateString();
 });
 
-Handlebars.registerHelper('orderAddress', function(address_id, address) {
+Handlebars.registerHelper('withAddress', function(address_id, address, options) {
   var _address = address.find(function(element){return element.id == address_id});
-  return '<div class="address-container">'
-  + '<div class="row">' + '<div class="col-md-4">Name <span class="pull-right">:</span>' + '</div>' + '<div class="col-md-8 p-l-0">' + _address.firstname + ' ' + _address.lastname + '</div>' + '</div>'
-  + '<div class="row">' + '<div class="col-md-4">Address 1 <span class="pull-right">:</span>' + '</div>' + '<div class="col-md-8 p-l-0">' + _address.address1 + '</div>' + '</div>'
-  + '<div class="row">' + '<div class="col-md-4">Address 2 <span class="pull-right">:</span>' + '</div>' + '<div class="col-md-8 p-l-0">' + _address.address2 + '</div>' + '</div>'
-  + '<div class="row">' + '<div class="col-md-4">City <span class="pull-right">:</span>' + '</div>' + '<div class="col-md-8 p-l-0">' + _address.city + '</div>' + '</div>'
-  + '<div class="row">' + '<div class="col-md-4">Phone <span class="pull-right">:</span>' + '</div>' + '<div class="col-md-8 p-l-0">' + _address.phone + '</div>' + '</div>'
-  + '<div class="row">' + '<div class="col-md-4">Zip Code <span class="pull-right">:</span>' + '</div>' + '<div class="col-md-8 p-l-0">' + _address.zipcode + '</div>' + '</div>'
-  +'</div>'
+  return options.fn(_address);
 });
 
-Handlebars.registerHelper('line_items', function(order_id, line_items) {
-  var line_item = line_items.find(function(element){return element.order_id == order_id});
-  return '<span>' + line_item.id + '</span>';
+Handlebars.registerHelper('showShipping', function(shipment_ids, shipments, shipping_rates, options) {
+  var _shipment = shipments.find(function(element){return element.id == shipment_ids[0]});
+  var _shipmentNumber = _shipment.selected_shipping_rate_id;
+  var _rate = shipping_rates.find(function(element){return element.id == _shipmentNumber});
+  return options.fn(_rate);
+});
+
+Handlebars.registerHelper('showPayment', function(payment_ids, payments, payment_methods, options) {
+  var _payment = payments.find(function(element){return element.id == payment_ids[0]});
+  var _paymentNumber = _payment.payment_method_id;
+  var _method = payment_methods.find(function(element){return element.id == _paymentNumber});
+  return options.fn(_method);
 });

@@ -21,7 +21,7 @@ function renderAllProductsPage(responseText) {
 };
 
 function renderMyOrders(responseText) {
-  document.querySelector('#wrapper').innerHTML = MyApp.html.my_orders({addresses: responseText['addresses'], orders: responseText['orders'], line_items: responseText['line_items']});
+  document.querySelector('#wrapper').innerHTML = MyApp.html.my_orders({addresses: responseText['addresses'], orders: responseText['orders'], line_items: responseText['line_items'], payment_methods: responseText['payment_methods'], payments: responseText['payments'], shipments: responseText['shipments'], shipping_rates: responseText['shipping_rates']});
 };
 
 function renderCart() {

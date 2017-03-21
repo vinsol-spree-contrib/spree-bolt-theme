@@ -31,6 +31,7 @@
                       <li><b>Status:</b> <span>{{state}}</span></li>
                       <li><b>Payment State:</b> <span>{{payment_state}}</span></li>
                       <li><b>Shipment State:</b> <span>{{shipment_state}}</span></li>
+                      <li><b>Total Items:</b> <span>{{item_count}}</span></li>
                       <li><b>Total:</b> <span>${{total}}</span></li>
                     </ul>
                     <a href="#order-{{number}}" class="btn-action btn-dark" data-toggle="modal">View Summary</a>
@@ -49,14 +50,99 @@
                       <div class="row">
                         <div class="col-md-6">
                           <h3>Shipping Address</h3>
-                          {{#orderAddress ship_address_id ../../addresses}}{{body}}{{/orderAddress}}
+                          {{#withAddress ship_address_id ../../addresses}}
+                            <div class="orders-container">
+                              <div class="row">
+                                <div class="col-md-4">Name <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{firstname}} {{lastname}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">Address 1 <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{address1}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">Address 2 <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{address2}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">City <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{city}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">Phone <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{phone}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">Postal Code <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{zipcode}}</div>
+                              </div>
+                            </div>
+                          {{/withAddress}}
                         </div>
                         <div class="col-md-6">
                           <h3>Billing Address</h3>
-                          {{#orderAddress bill_address_id ../../addresses}}{{body}}{{/orderAddress}}
+                          {{#withAddress bill_address_id ../../addresses}}
+                            <div class="orders-container">
+                              <div class="row">
+                                <div class="col-md-4">Name <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{firstname}} {{lastname}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">Address 1 <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{address1}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">Address 2 <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{address2}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">City <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{city}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">Phone <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{phone}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">Postal Code <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{zipcode}}</div>
+                              </div>
+                            </div>
+                          {{/withAddress}}
                         </div>
                       </div>
-                      <!-- {{#line_items id ../../line_items}}{{body}}{{/line_items}} -->
+                      <div class="row m-t-10">
+                        <div class="col-md-6">
+                          <h3>Shipments Information</h3>
+                          {{#showShipping shipment_ids ../../shipments ../../shipping_rates}}
+                            <div class="orders-container">
+                              <div class="row">
+                                <div class="col-md-4">Via <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{name}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">Rate <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{display_cost}}</div>
+                              </div>
+                            </div>
+                          {{/showShipping}}
+                        </div>
+                        <div class="col-md-6">
+                          <h3>Payment Information</h3>
+                          {{#showPayment payment_ids ../../payments ../../payment_methods}}
+                            <div class="orders-container">
+                              <div class="row">
+                                <div class="col-md-4">Name <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{name}}</div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-4">Description <span class="pull-right">:</span></div>
+                                <div class="col-md-8 p-l-0">{{description}}</div>
+                              </div>
+                            </div>
+                          {{/showPayment}}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
