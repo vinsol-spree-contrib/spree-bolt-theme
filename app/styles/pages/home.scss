@@ -129,7 +129,7 @@ $image-url : '../../images/';
     @extend .full-absolute;
     opacity: 0;
     visibility: hidden;
-    background: rgba(244, 209, 26, .8);
+    background: rgba($primary-hover, .8);
     @include animate(.75s cubic-bezier(0.5,1,0.05,1.0));
   }
 
@@ -139,7 +139,7 @@ $image-url : '../../images/';
     left: 50%;
     margin: 0 0 0 -75px;
     &:hover {
-      color: rgba(244, 209, 26, .8);
+      color: $primary-hover;
     }
   }
 

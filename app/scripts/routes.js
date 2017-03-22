@@ -43,7 +43,8 @@ function renderMyOrders(responseText) {
     payments: responseText['payments'],
     shipments: responseText['shipments'],
     shipping_rates: responseText['shipping_rates'],
-    variants: responseText['variants']
+    variants: responseText['variants'],
+    images: responseText['images']
   });
 };
 

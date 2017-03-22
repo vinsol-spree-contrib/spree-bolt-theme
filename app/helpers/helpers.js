@@ -49,10 +49,12 @@ Handlebars.registerHelper('showPayment', function(payment_ids, payments, payment
   return options.fn(_method);
 });
 
-Handlebars.registerHelper('showVariants', function(line_item_id, line_items, variants, options) {
+Handlebars.registerHelper('showVariants', function(line_item_id, line_items, variants, images, options) {
   var _lineItem = line_items.find(function(element) { return element.id == line_item_id });
   var _variantId = _lineItem.variant_id;
-  var _variant = variants.find(function(element){return element.id == _variantId})
-  var itemsHash = { 'line_item': _lineItem, 'variant': _variant };
+  var _variant = variants.find(function(element){return element.id == _variantId});
+  var _imageId = _variant.image_ids[0];
+  var _image = images.find(function(element){return element.id == _imageId});
+  var itemsHash = { 'line_item': _lineItem, 'variant': _variant, 'image': _image };
   return options.fn(itemsHash);
 });
