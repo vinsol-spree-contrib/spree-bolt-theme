@@ -25,6 +25,10 @@ img {
   vertical-align: top;
 }
 
+hr {
+  border-top-color: $primary-border;
+}
+
 li {
   list-style: none;
 }
@@ -270,7 +274,7 @@ ul {
   width: 350px;
 }
 
-.modal-dialog {
+.modal-dialog:not(.normal-modal) {
   position: absolute;
   left: 50%;
   top: 50%;

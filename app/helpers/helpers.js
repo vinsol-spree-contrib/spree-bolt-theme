@@ -30,7 +30,7 @@ Handlebars.registerHelper('formatDate', function(date) {
   return new Date(date).toDateString();
 });
 
-Handlebars.registerHelper('withAddress', function(address_id, address, options) {
+Handlebars.registerHelper('showAddress', function(address_id, address, options) {
   var _address = address.find(function(element){return element.id == address_id});
   return options.fn(_address);
 });
@@ -47,4 +47,12 @@ Handlebars.registerHelper('showPayment', function(payment_ids, payments, payment
   var _paymentNumber = _payment.payment_method_id;
   var _method = payment_methods.find(function(element){return element.id == _paymentNumber});
   return options.fn(_method);
+});
+
+Handlebars.registerHelper('showVariants', function(line_item_id, line_items, variants, options) {
+  var _lineItem = line_items.find(function(element) { return element.id == line_item_id });
+  var _variantId = _lineItem.variant_id;
+  var _variant = variants.find(function(element){return element.id == _variantId})
+  var itemsHash = { 'line_item': _lineItem, 'variant': _variant };
+  return options.fn(itemsHash);
 });

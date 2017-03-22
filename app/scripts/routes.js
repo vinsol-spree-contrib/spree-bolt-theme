@@ -1,27 +1,50 @@
 import { SpreeApi } from './../../bower_components/spree-frontend-integration/lib/index';
 
 function renderIndexPage(responseText) {
-  document.querySelector('#wrapper').innerHTML = MyApp.html.index({products: responseText['products'], images: responseText['images']});
+  document.querySelector('#wrapper').innerHTML = MyApp.html.index({
+    products: responseText['products'],
+    images: responseText['images']
+  });
 };
 
 function renderCategoryPage(responseText) {
-  document.querySelector('#wrapper').innerHTML = MyApp.html.categories({categories: responseText['taxons']});
+  document.querySelector('#wrapper').innerHTML = MyApp.html.categories({
+    categories: responseText['taxons']
+  });
 };
 
 function renderCategoryProductsPage(responseText) {
-  document.querySelector('#wrapper').innerHTML = MyApp.html.category_products({products: responseText['products']});
+  document.querySelector('#wrapper').innerHTML = MyApp.html.category_products({
+    products: responseText['products']
+  });
 };
 
 function renderProductShowPage(responseText) {
-  document.querySelector('#wrapper').innerHTML = MyApp.html.show({product: responseText.product, productProperties: responseText.product_properties, images: responseText['images']});
+  document.querySelector('#wrapper').innerHTML = MyApp.html.show({
+    product: responseText.product,
+    productProperties: responseText.product_properties,
+    images: responseText['images']
+  });
 };
 
 function renderAllProductsPage(responseText) {
-  document.querySelector('#wrapper').innerHTML = MyApp.html.products({product: responseText.product, images: responseText['images']});
+  document.querySelector('#wrapper').innerHTML = MyApp.html.products({
+    product: responseText.product,
+    images: responseText['images']
+  });
 };
 
 function renderMyOrders(responseText) {
-  document.querySelector('#wrapper').innerHTML = MyApp.html.my_orders({addresses: responseText['addresses'], orders: responseText['orders'], line_items: responseText['line_items'], payment_methods: responseText['payment_methods'], payments: responseText['payments'], shipments: responseText['shipments'], shipping_rates: responseText['shipping_rates']});
+  document.querySelector('#wrapper').innerHTML = MyApp.html.my_orders({
+    addresses: responseText['addresses'],
+    orders: responseText['orders'],
+    line_items: responseText['line_items'],
+    payment_methods: responseText['payment_methods'],
+    payments: responseText['payments'],
+    shipments: responseText['shipments'],
+    shipping_rates: responseText['shipping_rates'],
+    variants: responseText['variants']
+  });
 };
 
 function renderCart() {
