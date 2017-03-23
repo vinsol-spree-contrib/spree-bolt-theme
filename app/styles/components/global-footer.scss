@@ -31,7 +31,6 @@ $image-url : '../../images/';
       color: $primary-white;
       font-weight: 300;
       letter-spacing: .2px;
-      font-size: 
       @include animate(.25s);
       &:hover {
         color: $primary-hover;
