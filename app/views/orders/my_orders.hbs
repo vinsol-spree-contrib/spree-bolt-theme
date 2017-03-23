@@ -15,7 +15,9 @@
 
           {{# each orders}}
             {{#isOrderComplete completed_at}}
+
               {{> single_order_detail}}
+
               <div class="modal fade order-details-modal" id="order-{{number}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg normal-modal" role="document">
                   <div class="modal-content">
@@ -61,21 +63,11 @@
                           {{/showPayment}}
                         </div>
                       </div>
+
                       <hr class="m-t-25">
-                      <div class="row m-t-20 orders-header row-5px">
-                        <div class="col-md-6 col-5px">
-                          <h4 class="h4">Item</h4>
-                        </div>
-                        <div class="col-md-2 col-5px text-center">
-                          <h4 class="h4">Price</h4>
-                        </div>
-                        <div class="col-md-2 col-5px text-center">
-                          <h4 class="h4">Quantity</h4>
-                        </div>
-                        <div class="col-md-2 col-5px text-center">
-                          <h4 class="h4">Total</h4>
-                        </div>
-                      </div>
+
+                      {{> line_item_header}}
+
                       {{#each line_item_ids}}
                         <div class="row line-item-row row-5px">
                           {{#showVariants this ../../../line_items ../../../variants ../../../images}}
@@ -105,34 +97,15 @@
                         </div>
                         <hr>
                       {{/each}}
-                      <div class="row">
-                        <div class="order-summary-footer col-md-12">
-                          <div class="row row-5px">
-                            <div class="col-md-11 text-right col-5px">Subtotal:</div>
-                            <div class="col-md-1 text-right col-5px">${{item_total}}</div>
-                          </div>
-                          <hr>
-                          <div class="row row-5px">
-                            <div class="col-md-11 text-right col-5px">Shipping Total:</div>
-                            <div class="col-md-1 text-right col-5px">${{shipment_total}}</div>
-                          </div>
-                          <hr>
-                          <div class="row row-5px">
-                            <div class="col-md-11 text-right col-5px">Tax:</div>
-                            <div class="col-md-1 text-right col-5px">${{additional_tax_total}}</div>
-                          </div>
-                          <div class="row row-5px">
-                            <div class="total clearfix">
-                              <div class="col-md-11 text-right col-5px">Total:</div>
-                              <div class="col-md-1 text-right col-5px">${{total}}</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+
+                      {{> order_summary_footer}}
+
                     </div>
+
                     <div class="modal-footer text-center">
                       Thank you for associating with us.
                     </div>
+
                   </div>
                 </div>
               </div>

@@ -165,7 +165,7 @@ $image-url : '../../images/';
       color: #fff;
       &:hover {
         background: $primary-white;
-        color: rgba(244, 209, 26, .8);
+        color: $primary-hover;
       }
     }
   }

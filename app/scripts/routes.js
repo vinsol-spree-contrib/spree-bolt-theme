@@ -3,7 +3,8 @@ import { SpreeApi } from './../../bower_components/spree-frontend-integration/li
 function renderIndexPage(responseText) {
   document.querySelector('#wrapper').innerHTML = MyApp.html.index({
     products: responseText['products'],
-    images: responseText['images']
+    images: responseText['images'],
+
   });
 };
 
@@ -67,21 +68,29 @@ function renderTemplate() {
       category_id = window.location.pathname.split('/')[2];
 
   switch(path) {
-    case 'categories' : (new SpreeApi.taxonomyList()).sendRequest({cb: renderCategoryPage});
-    break;
-    case 'product' : (new SpreeApi.productShow()).sendRequest({cb: renderProductShowPage, params: { id: id }});
-    break;
-    case 'category_products' : (new SpreeApi.productsList()).sendRequest({cb: renderCategoryProductsPage, params: { q: { taxons_taxonomy_id_eq: category_id }}});
-    break;
-    case 'cart' : (new SpreeApi.productsList()).sendRequest({cb: renderCart});
-    break;
-    case 'checkout' : (new SpreeApi.productsList()).sendRequest({cb: renderCheckout});
-    break;
-    case 'my_orders' : (new SpreeApi.myOrders()).sendRequest({cb: renderMyOrders, path: '/api/ams/orders', method: 'GET'})
-    break;
-    case 'products' : (new SpreeApi.productsList()).sendRequest({cb: renderAllProductsPage});
-    break;
-    default : (new SpreeApi.productsList()).sendRequest({cb: renderIndexPage});
+    case 'categories':
+      new SpreeApi.taxonomyList().sendRequest({cb: renderCategoryPage});
+      break;
+    case 'product':
+      new SpreeApi.productShow().sendRequest({cb: renderProductShowPage, params: { id: id }});
+      break;
+    case 'category_products':
+      new SpreeApi.productsList().sendRequest({cb: renderCategoryProductsPage, params: { q: { taxons_taxonomy_id_eq: category_id }}});
+      break;
+    case 'cart':
+      new SpreeApi.productsList().sendRequest({cb: renderCart});
+      break;
+    case 'checkout':
+      new SpreeApi.productsList().sendRequest({cb: renderCheckout});
+      break;
+    case 'my_orders':
+      new SpreeApi.myOrders().sendRequest({cb: renderMyOrders, path: '/api/ams/orders', method: 'GET'})
+      break;
+    case 'products':
+      new SpreeApi.productsList().sendRequest({cb: renderAllProductsPage});
+      break;
+    default:
+      new SpreeApi.productsList().sendRequest({cb: renderIndexPage});
   }
 }
 

@@ -3,7 +3,7 @@ $image-url : '../../images/';
 .footer-logo {
   min-width: 150px;
   a {
-    color: $primary-border;
+    color: $primary-white;
     display: inline-block;
     font-family: 'Kaushan Script', cursive;
     font-size: 25px;
@@ -12,10 +12,11 @@ $image-url : '../../images/';
 
 .primary-footer {
   padding: 50px 0 40px 0;
-  background: $secondary-black;
+  background: $primary-black;
   .decorated-heading {
     font-size: 18px;
     margin: 0 0 15px 0;
+    font-weight: 700;
     color: $primary-white;
     span:before {
       bottom: 0;
@@ -27,7 +28,10 @@ $image-url : '../../images/';
 .footer-nav {
   li {
     a {
-      color: $primary-border;
+      color: $primary-white;
+      font-weight: 300;
+      letter-spacing: .2px;
+      font-size: 
       @include animate(.25s);
       &:hover {
         color: $primary-hover;
