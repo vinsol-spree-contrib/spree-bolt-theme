@@ -8,6 +8,7 @@
 //Core
 @import "core/fonts.scss";
 @import "core/colors.scss";
+@import "core/breakpoints.scss";
 @import "core/mixins.scss";
 @import "core/classes.scss";
 @import "core/global.scss";
@@ -27,4 +28,3 @@
 @import "pages/product-show.scss";
 @import "pages/category.scss";
 @import "pages/my-orders.scss";
-

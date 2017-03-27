@@ -2,6 +2,7 @@
 {{> header}}
 {{> login_form}}
 {{> signup_form}}
+{{> forgot_password}}
 {{> menu_container}}
 
 <section class="orders-page-wrapper">
@@ -13,7 +14,7 @@
       <div class="col-md-6 col-md-offset-3 orders-inner">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-          {{# each orders}}
+          {{#each orders}}
             {{#isOrderComplete completed_at}}
 
               {{> single_order_detail}}

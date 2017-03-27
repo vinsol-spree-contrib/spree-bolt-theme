@@ -86,6 +86,15 @@ $image-url : '../../images/';
   &.category-page {
     padding: 10px 0;
   }
+
+  &.category-products {
+    background: #F4F4F4;
+
+    .decorated-heading {
+      margin-bottom: 30px;
+      margin-top: 0;
+    }
+  }
 }
 
 .category-item {
@@ -205,4 +214,17 @@ $image-url : '../../images/';
     margin: 0 0 5px 0;
     padding: 2px 10px;
   }
+}
+
+/* RESPONSIVE */
+@media(max-width: $desktop) {
+  .container { width: 1024px; } 
+}
+
+@media(max-width: $tablet) {
+  .container { width: 768px; } 
+}
+
+@media(max-width: $mobile) {
+  .container { width: 100%; } 
 }

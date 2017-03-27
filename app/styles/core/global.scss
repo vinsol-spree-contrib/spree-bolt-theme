@@ -38,6 +38,10 @@ ul {
   padding: 0;
 }
 
+.container {
+  width: 1200px;
+}
+
 .p-l-0 {
   padding-left: 0!important;
 }
@@ -356,6 +360,9 @@ ul {
 .modal-footer {
   background: $primary-black!important;
   color: $primary-white;
+  .color-yellow:hover {
+    color: $primary-white;
+  }
 }
 
 .modal-backdrop.in {

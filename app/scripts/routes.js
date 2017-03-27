@@ -16,7 +16,8 @@ function renderCategoryPage(responseText) {
 
 function renderCategoryProductsPage(responseText) {
   document.querySelector('#wrapper').innerHTML = MyApp.html.category_products({
-    products: responseText['products']
+    products: responseText['products'],
+    images: responseText['images']
   });
 };
 
@@ -75,7 +76,7 @@ function renderTemplate() {
       new SpreeApi.productShow().sendRequest({cb: renderProductShowPage, params: { id: id }});
       break;
     case 'category_products':
-      new SpreeApi.productsList().sendRequest({cb: renderCategoryProductsPage, params: { q: { taxons_taxonomy_id_eq: category_id }}});
+      new SpreeApi.productsList().sendRequest({cb: renderCategoryProductsPage, params: { q: { taxons_id_eq: category_id }}});
       break;
     case 'cart':
       new SpreeApi.productsList().sendRequest({cb: renderCart});

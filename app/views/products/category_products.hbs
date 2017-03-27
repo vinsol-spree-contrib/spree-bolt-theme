@@ -1,19 +1,45 @@
-{{#each products}}
-  <div class="col-md-3 text-center col-5px">
-    <div class="product-container">
-      <h3 class="product-name">{{name}}</h3>
-      <h4 class="product-price">${{price}}</h4>
-      <div class="product-container-inner">
-        <a href="javascript:void(0);" class="btn btn-cart">Add To Cart</a>
-        <div class="product-options text-center">
-          <a href="javascript:void(0);">
-            <i class="material-icons">favorite</i>
-          </a>
-          <a href={{#productUrl id}}{{body}}{{/productUrl}}>
-            <i class="material-icons">remove_red_eye</i>
-          </a>
+{{> header}}
+{{> search}}
+{{> login_form}}
+{{> signup_form}}
+{{> menu_container}}
+{{> cart}}
+
+<div class="category-section category-section-all category-products">
+  <h1 class="decorated-heading text-center">
+    <span class="text-uppercase">Category Products</span>
+  </h1>
+  <div class="container container-5px">
+    <div class="row p-t-30 row-5px">
+      <div class="col-md-3">Filters</div>
+      <div class="col-md-9">
+        <div class="row">
+          {{#each products}}
+            <div class="col-md-3 text-center col-5px">
+              <div class="product-container">
+                <img src={{#productImageUrl image_ids ../images}}{{body}}{{/productImageUrl}} class="img-full">
+                <h3 class="product-name">{{name}}</h3>
+                <h4 class="product-price">${{price}}</h4>
+                <div class="product-container-inner">
+                  <a href="javascript:void(0);" class="btn btn-cart">Add To Cart</a>
+                  <div class="product-options text-center">
+                    <a href="javascript:void(0);">
+                      <i class="material-icons">favorite</i>
+                    </a>
+                    <a href={{#productUrl id}}{{body}}{{/productUrl}}>
+                      <i class="material-icons">remove_red_eye</i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
         </div>
       </div>
     </div>
   </div>
-{{/each}}
+</div>
+
+{{> newsletter}}
+{{> scroll_top}}
+{{> footer}}

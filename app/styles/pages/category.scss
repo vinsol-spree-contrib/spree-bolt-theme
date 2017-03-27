@@ -61,10 +61,10 @@
       height: 200px;
       border-radius: 200px;
       background: $transparent;
-      border: 7px solid $primary-border;
+      border: 5px solid $primary-border;
       left: 0;
       top: 0;
-      @include animate(.3s cubic-bezier(1,1,1,1));
+      @include animate(.35s cubic-bezier(1,1,1,1));
     }
   }
 
@@ -88,10 +88,10 @@
   }
 
   .img-full {
-    @include animate(.3s cubic-bezier(1,1,1,1));
+    @include animate(.35s cubic-bezier(1,1,1,1));
   }
 
   .category-name {
-    @include animate(.3s cubic-bezier(1,1,1,1));
+    @include animate(.35s cubic-bezier(1,1,1,1));
   }
 }

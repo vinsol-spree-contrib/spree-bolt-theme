@@ -2,6 +2,7 @@
 {{> search}}
 {{> login_form}}
 {{> signup_form}}
+{{> forgot_password}}
 {{> menu_container}}
 
 <section class="category-page-wrapper">
@@ -13,7 +14,7 @@
       {{#each categories}}
         {{#if parent_id}}
           <li class="col-md-4 single-category">
-            <a href="#" class="block">
+            <a href={{#productCategoryUrl id}}{{body}}{{/productCategoryUrl}} class="block">
               <img src="../images/category_{{id}}.jpg" class="img-full" />
               <h3 class="category-name">{{name}}</h3>
             </a>
