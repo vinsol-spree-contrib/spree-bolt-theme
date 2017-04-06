@@ -58,3 +58,11 @@ Handlebars.registerHelper('showVariants', function(line_item_id, line_items, var
   var itemsHash = { 'line_item': _lineItem, 'variant': _variant, 'image': _image };
   return options.fn(itemsHash);
 });
+
+Handlebars.registerHelper('showProductVariants', function(variant_id, variants, images, options) {
+  var _variant = variants.find(function(element) { return element.id == variant_id});
+  var _imageId = _variant.image_ids[0];
+  var _image = images.find(function(element){return element.id == _imageId});
+  var itemsHash = { 'variant': _variant, 'image': _image };
+  return options.fn(itemsHash);
+});

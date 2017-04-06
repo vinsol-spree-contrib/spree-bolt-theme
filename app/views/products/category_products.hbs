@@ -9,25 +9,22 @@
   <h1 class="decorated-heading text-center">
     <span class="text-uppercase">Category Products</span>
   </h1>
-  <div class="container container-5px">
+  <div class="container container-5px products-found">
     <div class="row p-t-30 row-5px">
       <div class="col-md-3">Filters</div>
       <div class="col-md-9">
-        <div class="row">
+        <div class="row flex-product-row">
           {{#each products}}
-            <div class="col-md-3 text-center col-5px">
+            <div class="col-md-4 text-center col-5px single-product">
               <div class="product-container">
                 <img src={{#productImageUrl image_ids ../images}}{{body}}{{/productImageUrl}} class="img-full">
                 <h3 class="product-name">{{name}}</h3>
                 <h4 class="product-price">${{price}}</h4>
                 <div class="product-container-inner">
-                  <a href="javascript:void(0);" class="btn btn-cart">Add To Cart</a>
+                  <a href={{#productUrl id}}{{body}}{{/productUrl}} class="btn btn-cart">View Details</a>
                   <div class="product-options text-center">
                     <a href="javascript:void(0);">
                       <i class="material-icons">favorite</i>
-                    </a>
-                    <a href={{#productUrl id}}{{body}}{{/productUrl}}>
-                      <i class="material-icons">remove_red_eye</i>
                     </a>
                   </div>
                 </div>
@@ -35,9 +32,22 @@
             </div>
           {{/each}}
         </div>
+        <div class="row pagination-row">
+          <nav aria-label="Page navigation" class="main-pagination text-center">
+            <ul class="pagination">
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="container container-5px products-not-found hide">
+    <div class="row p-t-30 row-5px">
+      <h1 class="text-center text-uppercase color-yellow">Sorry No Products Found!</h1>
+    </div>
+  </div>
+
 </div>
 
 {{> newsletter}}

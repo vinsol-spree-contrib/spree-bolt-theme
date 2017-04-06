@@ -1,0 +1,33 @@
+.pagination {
+	margin: 0;
+	padding: 75px 0 10px 0;
+
+	a {
+		color: $primary-black!important;
+	}
+
+	li.active a {
+		background: $primary-hover;
+		border: 1px solid $primary-black;
+		color: $primary-white!important;
+		&:hover {
+			background: $primary-hover;
+		}
+	}
+}
+
+.pagination > li > a,
+.pagination > li > span {
+	padding: 7px 15px;
+	&:hover {
+		color: $primary-white!important;
+		background: $primary-hover;
+	}
+}
+
+.pagination > li:first-child > a,
+.pagination > li:first-child > span,
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+	@include border-radius(0);
+}

@@ -1,24 +1,21 @@
-<section class="category-section">
+<section class="category-section category-section-home">
   <div class="container container-5px">
     <h3 class="decorated-heading">
       <span>Explore Dining</span>
       <a href="/products" class="btn btn-view-all pull-right">View All Products</a>
     </h3>
-    <div class="row p-t-30 row-5px">
+    <div class="row p-t-30 row-5px flex-product-row">
       {{#each products}}
-        <div class="col-md-3 text-center col-5px">
+        <div class="col-md-3 text-center col-5px single-product">
           <div class="product-container">
             <img src={{#productImageUrl image_ids ../images}}{{body}}{{/productImageUrl}} class="img-full">
             <h3 class="product-name">{{name}}</h3>
             <h4 class="product-price">${{price}}</h4>
             <div class="product-container-inner">
-              <a href="javascript:void(0);" class="btn btn-cart">Add To Cart</a>
+              <a href={{#productUrl id}}{{body}}{{/productUrl}} class="btn btn-cart">View Details</a>
               <div class="product-options text-center">
                 <a href="javascript:void(0);">
                   <i class="material-icons">favorite</i>
-                </a>
-                <a href={{#productUrl id}}{{body}}{{/productUrl}}>
-                  <i class="material-icons">remove_red_eye</i>
                 </a>
               </div>
             </div>
@@ -76,27 +73,24 @@
   </div>
 </section>
 
-<section class="category-section">
+<section class="category-section category-section-home">
   <div class="container container-5px">
     <h3 class="decorated-heading">
       <span>Explore Wall Decor</span>
       <a href="javascript:void(0);" class="btn btn-view-all pull-right">View all products</a>
     </h3>
-    <div class="row p-t-30 row-5px">
+    <div class="row p-t-30 row-5px flex-product-row">
       {{#each products}}
-        <div class="col-md-3 text-center col-5px">
+        <div class="col-md-3 text-center col-5px single-product">
           <div class="product-container">
             <img src={{#productImageUrl image_ids ../images}}{{body}}{{/productImageUrl}} class="img-full">
             <h3 class="product-name">{{name}}</h3>
             <h4 class="product-price">${{price}}</h4>
             <div class="product-container-inner">
-              <a href="javascript:void(0);" class="btn btn-cart">Add To Cart</a>
+              <a href={{#productUrl id}}{{body}}{{/productUrl}} class="btn btn-cart">View Details</a>
               <div class="product-options text-center">
                 <a href="javascript:void(0);">
                   <i class="material-icons">favorite</i>
-                </a>
-                <a href={{#productUrl id}}{{body}}{{/productUrl}}>
-                  <i class="material-icons">remove_red_eye</i>
                 </a>
               </div>
             </div>

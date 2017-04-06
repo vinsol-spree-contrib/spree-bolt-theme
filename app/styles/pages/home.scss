@@ -130,7 +130,6 @@ $image-url : '../../images/';
   background: $primary-white;
   min-height: 290px;
   padding: 10px 31px;
-  position: relative;
   overflow: hidden;
   @include animate(.75s);
 
@@ -147,7 +146,10 @@ $image-url : '../../images/';
     position: absolute;
     left: 50%;
     margin: 0 0 0 -75px;
+    background: $primary-white;
+    color: $primary-hover;
     &:hover {
+      background: $primary-white;
       color: $primary-hover;
     }
   }
@@ -170,8 +172,8 @@ $image-url : '../../images/';
       line-height: 33px;
       margin: 0 5px;
       @include animate(.35s);
-      background: $transparent;
-      color: #fff;
+      background: $primary-white;
+      color: $primary-hover;
       &:hover {
         background: $primary-white;
         color: $primary-hover;
@@ -213,6 +215,26 @@ $image-url : '../../images/';
     line-height: 20px;
     margin: 0 0 5px 0;
     padding: 2px 10px;
+  }
+}
+
+.flex-product-row {
+  display: flex;
+  flex-wrap: wrap;
+  .single-product {
+    background: $primary-white;
+    position: relative;
+    margin: 5px;
+    padding: 0!important;
+    width: calc(33.333% - 10px);
+  }
+}
+
+.category-section-home {
+  .flex-product-row {
+    .single-product {
+      width: calc(25% - 10px);   
+    }
   }
 }
 
