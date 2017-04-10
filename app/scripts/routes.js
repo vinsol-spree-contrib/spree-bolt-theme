@@ -16,6 +16,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
 function getActivePage(page) {
   var activePage = Number(decodeURIComponent(window.location.search.substring(1)).split('=')[1]);
   if(isNaN(activePage)) {
+    $('.to-be-hidden').removeClass('hide');
     $('.pagination li').first().addClass('active');
   }
   $('.pagination').find('li').each(function() {
@@ -26,15 +27,22 @@ function getActivePage(page) {
   });
   if(activePage > page) {
     $('.products-found').hide();
+    $('.to-be-hidden').addClass('hide');
     $('.products-not-found').removeClass('hide');
   }
 };
 
-function renderIndexPage(responseText) {
+function renderHomePage(taxonData, productsData) {
   document.querySelector('#wrapper').innerHTML = MyApp.html.index({
-    products: responseText['products'],
-    images: responseText['images']
+    products: productsData['products'],
+    images: productsData['images']
   });
+}
+
+function renderIndexPage(responseText) {
+  new SpreeApi.taxonomyList().sendRequest({cb: function(taxonData){
+    renderHomePage(taxonData, responseText)
+  }});
 };
 
 function renderCategoryPage(responseText) {

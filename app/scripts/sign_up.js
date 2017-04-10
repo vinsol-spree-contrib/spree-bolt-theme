@@ -49,7 +49,7 @@ $(document).ready(function() {
   });
 
   $('#wrapper').on('submit', '#login', function(event) {
-    (new SpreeApi.login()).sendRequest({params: {
+    new SpreeApi.login().sendRequest({params: {
       user: {
         email: $('#user-login-name').val(),
         password: $('#user-login-password').val()
@@ -58,8 +58,7 @@ $(document).ready(function() {
     event.preventDefault();
   });
 
-  function handleLoginSuccess(response) { 
-    var message = 'You have been successfully logged in.';
+  function handleLoginSuccess(response) {
     location.reload();
   };
 });

@@ -11,13 +11,13 @@ function showSearchResults(responseText) {
 };
 
 function searchProducts() {
-  $('.search').on('input', function(){
+  $('.search').on('input', function() {
   	$('.search-results').html('');
   	$('.search-results').removeClass('show-search');
   	if($(this).val().length){
-  			$('.search-results').addClass('show-search');
+  		$('.search-results').addClass('show-search');
         new SpreeApi.productsList().sendRequest({cb: showSearchResults, params: { per_page: 5, q: { name_cont: $(this).val() }}});
-	}
+		}
   });
 };
 

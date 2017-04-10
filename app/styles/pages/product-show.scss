@@ -13,6 +13,15 @@
   }
 }
 
+.flexslider {
+  position: relative;
+  left: -25px;
+  transition: left .5s;
+  &.move-in {
+    left: 0;
+  }
+}
+
 .flex-control-thumbs {
   text-align: center;
   display: block;
@@ -23,6 +32,9 @@
   letter-spacing: 0;
   top: 0;
   z-index: 9;
+  max-height: 421px;
+  overflow-y: auto;
+  overflow-x: hidden;
   li {
     float: none;
     width: 65px;

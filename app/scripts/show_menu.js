@@ -24,14 +24,16 @@ ShowMenu.prototype.bindEvents = function() {
   this.hide();
 };
 
-$(document).ready(function() {
-  var options = {
-    menuOpenBtn: $('.menu-toggle-btn'),
-    menu: $('.menu-container'),
-    menuCloseBtn: $('.close-menu'),
-    classToToggle: 'expand'
-  },
+$(window).on('load', function() {
+  setTimeout(function() {
+    var options = {
+      menuOpenBtn: $('.menu-toggle-btn'),
+      menu: $('.menu-container'),
+      menuCloseBtn: $('.close-menu'),
+      classToToggle: 'expand'
+    },
 
-  showMenu = new ShowMenu(options);
-  showMenu.bindEvents();
+    showMenu = new ShowMenu(options);
+    showMenu.bindEvents();
+  }, 250);
 });
