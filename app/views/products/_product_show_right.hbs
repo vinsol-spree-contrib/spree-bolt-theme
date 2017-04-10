@@ -6,7 +6,7 @@
     <div class="clearfix variants-container">
       {{#each product.variants_including_master_ids}}
         {{#showProductVariants this ../variants ../images}}
-          <a href="#" class="col-md-2 product-variant {{variant.can_supply}}">
+          <a href="#" class="col-md-2 product-variant {{variant.can_supply}}" data-variant-id={{variant.id}}>
             <img src={{image.small_url}} class="img-responsive">  
           </a>
         {{/showProductVariants}}
@@ -23,7 +23,7 @@
   <div class="left-5">
     <aside class="product-btns row row-5px">
       <div class="col-sm-6 col-5px">
-        <a href="javascript:void(0);" class="btn-action btn-block text-center text-uppercase">Add To Cart</a>
+        <a href="javascript:void(0);" class="add-to-cart btn-action btn-block text-center text-uppercase">Add To Cart</a>
       </div>
       <div class="col-sm-6 col-5px">
         <a href="javascript:void(0);" class="btn-action btn-dark btn-block text-center text-uppercase">Buy Now</a>

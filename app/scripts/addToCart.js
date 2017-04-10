@@ -1,10 +1,12 @@
-// import { SpreeApi } from './../../bower_components/spree-frontend-integration/lib/index';
-// import { getCookie, setCookie } from './cookie'
+import { SpreeApi } from './../../bower_components/spree-frontend-integration/lib/index';
+import { getCookie, setCookie } from './cookie'
 
-// function addToCart() {
-//   if(getCookie('orderId').length == 0){
-//     (new SpreeApi.updateOrder()).sendRequest({cb: createOrder, params: { 'id': getCookie('orderId'), 'quantity': 1, 'variant_id': 32 }});
-//   }
-// }
+function addToCart() {
+  (new SpreeApi.updateOrder()).sendRequest({cb: showOrder, 'params': { 'id': getCookie('orderId'), 'line_items_attributes': [ { 'quantity': 1, 'variant_id': $('[data-variant-id]:first').data('variant-id') } ]}});
+}
 
-// addToCart();
+$(function(){
+	$('.add-to-cart').on('click', function(){
+		addToCart();
+	})
+})

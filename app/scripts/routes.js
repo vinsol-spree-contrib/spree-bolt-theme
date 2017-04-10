@@ -1,4 +1,5 @@
 import { SpreeApi } from './../../bower_components/spree-frontend-integration/lib/index';
+import { getCookie, setCookie } from './cookie'
 
 var getUrlParameter = function getUrlParameter(sParam) {
   var sPageURL = decodeURIComponent(window.location.search.substring(1));
@@ -35,7 +36,8 @@ function getActivePage(page) {
 function renderHomePage(taxonData, productsData) {
   document.querySelector('#wrapper').innerHTML = MyApp.html.index({
     products: productsData['products'],
-    images: productsData['images']
+    images: productsData['images'],
+    categories: taxonData['taxons']
   });
 }
 
@@ -106,7 +108,15 @@ function createOrder(response) {
   setCookie('orderId', response['order']['number']);
 };
 
+function getOrderDetails(responseText) {
+}
+
 function renderTemplate() {
+  if(getCookie('orderId').length == 0){
+    (new SpreeApi.createOrder()).sendRequest({ cb: createOrder })
+  }
+
+  (new SpreeApi.currentOrder()).sendRequest({cb: getOrderDetails, path: '/api/ams/orders/' + getCookie('orderId')})
 
   var path = window.location.pathname.split('/')[1],
       id = window.location.pathname.split('/')[2],
