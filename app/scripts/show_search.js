@@ -15,7 +15,9 @@ ShowSearch.prototype.show = function() {
 ShowSearch.prototype.hide = function() {
   var _this = this;
   this.searchCloseBtn.on('click', function() {
-    _this.search.removeClass(_this.classToToggle);  
+    $('#search-input').val('');
+    $('.search-results').html('').removeClass('show-search');
+    _this.search.removeClass(_this.classToToggle);
   });
 };
 

@@ -108,3 +108,26 @@
   }
 
 }
+
+.search-results {
+  background: $primary-white;
+  margin-top: -5px;
+  visibility: hidden;
+  opacity: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  @include animate(.25s);
+  &.show-search {
+    visibility: visible;
+    opacity: 1;
+    padding: 15px;
+    margin-top: 0;
+  }
+}
+
+.search-item {
+  display: block;
+  margin: 7px 0;
+  font-size: 20px;
+}
