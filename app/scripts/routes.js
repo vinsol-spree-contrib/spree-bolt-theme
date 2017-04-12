@@ -42,7 +42,7 @@ function renderHomePage(taxonData, productsData) {
 }
 
 function renderIndexPage(responseText) {
-  new SpreeApi.taxonomyList().sendRequest({cb: function(taxonData){
+  new SpreeApi.taxonomyList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: function(taxonData){
     renderHomePage(taxonData, responseText)
   }});
 };
@@ -115,9 +115,9 @@ function getOrderDetails(responseText) {
 
 function renderTemplate() {
   if(getCookie('orderId').length == 0) {
-    (new SpreeApi.createOrder()).sendRequest({ cb: createOrder })
+    (new SpreeApi.createOrder('https://spree-yoda-theme.herokuapp.com/')).sendRequest({ cb: createOrder })
   }
-  (new SpreeApi.currentOrder()).sendRequest({cb: getOrderDetails, path: '/api/ams/orders/' + getCookie('orderId')})
+  (new SpreeApi.currentOrder('https://spree-yoda-theme.herokuapp.com/')).sendRequest({cb: getOrderDetails, path: '/api/ams/orders/' + getCookie('orderId')})
 
   var path = window.location.pathname.split('/')[1],
       id = window.location.pathname.split('/')[2],
