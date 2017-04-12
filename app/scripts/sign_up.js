@@ -1,5 +1,4 @@
 import { SpreeApi } from './../../bower_components/spree-frontend-integration/lib/index';
-import Handlebars from './../../.tmp/scripts/handlebars.runtime.js'
 import Tea from './vendor/tea'
 import getCookie from './cookie'
 
@@ -13,7 +12,7 @@ import getCookie from './cookie'
 
 $(document).ready(function() {
   $('#wrapper').on('submit', '#sign-up', function(event) {
-    (new SpreeApi.signUp()).sendRequest({params: {
+    (new SpreeApi.signUp('https://spree-yoda-theme.herokuapp.com/')).sendRequest({params: {
       user: {
         email: $('#user-sign-up-name').val(),
         password: $('#user-sign-up-password').val()
@@ -22,7 +21,7 @@ $(document).ready(function() {
     event.preventDefault();
   });
 
-  function handleSuccess(response) { 
+  function handleSuccess(response) {
     var message = 'Your account has been successfully created. Please Login to continue.';
     $('#flash').addClass('slide-down').html(message);
     setTimeout(function() {
@@ -49,7 +48,7 @@ $(document).ready(function() {
   });
 
   $('#wrapper').on('submit', '#login', function(event) {
-    (new SpreeApi.login()).sendRequest({params: {
+    (new SpreeApi.login('https://spree-yoda-theme.herokuapp.com/')).sendRequest({params: {
       user: {
         email: $('#user-login-name').val(),
         password: $('#user-login-password').val()
@@ -58,7 +57,7 @@ $(document).ready(function() {
     event.preventDefault();
   });
 
-  function handleLoginSuccess(response) { 
+  function handleLoginSuccess(response) {
     var message = 'You have been successfully logged in.';
     location.reload();
   };

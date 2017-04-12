@@ -106,28 +106,28 @@ function renderTemplate() {
 
   switch(path) {
     case 'categories':
-      new SpreeApi.taxonomyList().sendRequest({cb: renderCategoryPage});
+      new SpreeApi.taxonomyList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderCategoryPage});
       break;
     case 'product':
-      new SpreeApi.productShow().sendRequest({cb: renderProductShowPage, params: { id: id }});
+      new SpreeApi.productShow('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderProductShowPage, params: { id: id }});
       break;
     case 'category_products':
-      new SpreeApi.productsList().sendRequest({cb: renderCategoryProductsPage, params: { q: { taxons_id_eq: category_id }, per_page: 6, page: getUrlParameter('page') }});
+      new SpreeApi.productsList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderCategoryProductsPage, params: { q: { taxons_id_eq: category_id }, per_page: 6, page: getUrlParameter('page') }});
       break;
     case 'cart':
-      new SpreeApi.productsList().sendRequest({cb: renderCart});
+      new SpreeApi.productsList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderCart});
       break;
     case 'checkout':
-      new SpreeApi.productsList().sendRequest({cb: renderCheckout});
+      new SpreeApi.productsList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderCheckout});
       break;
     case 'my_orders':
-      new SpreeApi.myOrders().sendRequest({cb: renderMyOrders, path: '/api/ams/orders', method: 'GET'})
+      new SpreeApi.myOrders('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderMyOrders, path: '/api/ams/orders', method: 'GET'})
       break;
     case 'products':
-      new SpreeApi.productsList().sendRequest({cb: renderAllProductsPage});
+      new SpreeApi.productsList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderAllProductsPage});
       break;
     default:
-      new SpreeApi.productsList().sendRequest({cb: renderIndexPage, params: {per_page: 8}});
+      new SpreeApi.productsList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderIndexPage, params: {per_page: 8}});
   }
 }
 

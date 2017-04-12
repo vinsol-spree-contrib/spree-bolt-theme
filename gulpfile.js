@@ -24,8 +24,18 @@ const reload = browserSync.reload;
 
 var dev = true;
 // var handlebars_helpers = require('./app/scripts/helpers.js');
+var s3Credentials = {
+  "key":    "AKIAJ5DJHPG6KEKUXUBQ",
+  "secret": "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",
+  "bucket": "spree-bolt-theme"
+};
+var s3 = require( "gulp-s3" );
 
 gulp.task('styles', () => {
+
+  gulp.src('app/styles/vendor/flexslider.css')
+  .pipe(gulp.dest('.tmp/styles/vendor'))
+
   return gulp.src('app/styles/*.scss')
     // .pipe($.plumber())
     // .pipe($.sourcemaps.init())
@@ -44,13 +54,35 @@ gulp.task('scripts', () => {
     var testFiles = glob.sync('./app/scripts/*.js');
     testFiles.push('./bower_components/spree-frontend-integration/lib/index.js')
 
+    var extraFiles = glob.sync('./app/scripts/*.js');
+    var bootstrapFiles = glob.sync('./bower_components/bootstrap-sass/**/*.js');
+    var jqueryFile = glob.sync('./bower_components/jquery/dist/jquery.js')
+    var sliderFile = glob.sync('/scripts/product_slider.js')
+    var flexFile = glob.sync('./app/scripts/vendor/jquery.flexslider-min.js')
+
+    gulp.src(bootstrapFiles)
+    .pipe(gulp.dest('.tmp'))
+
+    gulp.src(extraFiles)
+    .pipe(gulp.dest('.tmp'))
+
+    gulp.src(jqueryFile)
+    .pipe(gulp.dest('.tmp'))
+
+    gulp.src(sliderFile)
+    .pipe(gulp.dest('.tmp'))
+
+
+    gulp.src(flexFile)
+    .pipe(gulp.dest('.tmp'))
+
     gulp.src('app/helpers/*.js')
     .pipe(gulp.dest('.tmp/helpers'))
 
     return browserify({
-      entries: testFiles,
-      transform: [babelify]
+      entries: testFiles
     })
+    .transform("babelify")
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('.tmp/scripts'))
@@ -76,11 +108,7 @@ gulp.task('lint:test', () => {
 
 gulp.task('html', ['styles', 'scripts'], () => {
   return gulp.src('app/*.html')
-    .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
-    .pipe($.if('*.js', $.uglify()))
-    .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
-    .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('.tmp'));
 });
 
 gulp.task('template', ()=>{
@@ -116,7 +144,7 @@ gulp.task('template', ()=>{
 gulp.task('images', () => {
   return gulp.src('app/images/**/*')
     .pipe($.cache($.imagemin()))
-    .pipe(gulp.dest('dist/images'));
+    .pipe(gulp.dest('.tmp/images/'));
 });
 
 gulp.task('fonts', () => {
@@ -137,7 +165,7 @@ gulp.task('extras', () => {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', () => {
-  runSequence(['clean', 'wiredep'], ['styles', 'scripts', 'template', 'fonts'], () => {
+  runSequence(['clean', 'wiredep'], ['styles', 'scripts', 'template', 'fonts', 'html', 'images'], () => {
     browserSync.init({
       notify: false,
       port: 9000,
@@ -215,7 +243,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['template', 'html', 'images', 'fonts'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
@@ -225,3 +253,7 @@ gulp.task('default', () => {
     runSequence(['clean', 'wiredep'], 'build', resolve);
   });
 });
+gulp.task('deploy', ()=>{
+  gulp.src('./.tmp/**')
+  .pipe(s3(s3Credentials));
+})
