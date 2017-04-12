@@ -16,8 +16,8 @@ $image-url : '../../images/';
 }
 
 .banner-heading {
-  background: rgba(0,0,0,.6);
-  color: #fff;
+  background: rgba(0,0,0,.7);
+  color: $primary-white;
   display: inline-block;
   font-family: 'Montserrat-Light';
   font-size: 30px;
@@ -27,17 +27,14 @@ $image-url : '../../images/';
 }
 
 .btn-banner {
-  background: rgba(255,255,255,.85);
-  border-radius: 0;
+  @include border-radius(0);
+  background: $primary-white;
   font-size: 16px;
   height: 40px;
   line-height: 40px;
   padding: 0;
   text-transform: uppercase;
   width: 170px;
-  &:hover {
-    background: rgba(255,255,255,1);
-  }
 }
 
 .banner-overlay {

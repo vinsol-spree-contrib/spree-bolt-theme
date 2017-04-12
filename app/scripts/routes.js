@@ -1,4 +1,5 @@
 import { SpreeApi } from './../../bower_components/spree-frontend-integration/lib/index';
+import { getCookie, setCookie } from './cookie'
 
 var getUrlParameter = function getUrlParameter(sParam) {
   var sPageURL = decodeURIComponent(window.location.search.substring(1));
@@ -16,6 +17,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
 function getActivePage(page) {
   var activePage = Number(decodeURIComponent(window.location.search.substring(1)).split('=')[1]);
   if(isNaN(activePage)) {
+    $('.to-be-hidden').removeClass('hide');
     $('.pagination li').first().addClass('active');
   }
   $('.pagination').find('li').each(function() {
@@ -26,15 +28,23 @@ function getActivePage(page) {
   });
   if(activePage > page) {
     $('.products-found').hide();
+    $('.to-be-hidden').addClass('hide');
     $('.products-not-found').removeClass('hide');
   }
 };
 
-function renderIndexPage(responseText) {
+function renderHomePage(taxonData, productsData) {
   document.querySelector('#wrapper').innerHTML = MyApp.html.index({
-    products: responseText['products'],
-    images: responseText['images']
+    products: productsData['products'],
+    images: productsData['images'],
+    categories: taxonData['taxons']
   });
+}
+
+function renderIndexPage(responseText) {
+  new SpreeApi.taxonomyList().sendRequest({cb: function(taxonData){
+    renderHomePage(taxonData, responseText)
+  }});
 };
 
 function renderCategoryPage(responseText) {
@@ -49,9 +59,10 @@ function renderCategoryProductsPage(responseText) {
     images: responseText['images'],
     meta: responseText['meta']
   });
+  var activePage = Number(window.location.pathname.split('/')[2]);
   var totalPages = responseText.meta.total_pages;
   for(var index = 1; index <= totalPages; index++) {
-    $('.pagination-row .pagination').append('<li><a href="/category_products/?page=' + index + '">' + index + '</a></li>');
+    $('.pagination-row .pagination').append('<li><a href="/category_products/' + activePage + '?page=' + index + '">' + index + '</a></li>');
   }
   getActivePage(totalPages);
 };
@@ -68,7 +79,7 @@ function renderProductShowPage(responseText) {
 function renderAllProductsPage(responseText) {
   document.querySelector('#wrapper').innerHTML = MyApp.html.products({
     product: responseText['product'],
-    images: responseText['images']
+    images: responseText['images'],
   });
 };
 
@@ -98,7 +109,15 @@ function createOrder(response) {
   setCookie('orderId', response['order']['number']);
 };
 
+function getOrderDetails(responseText) {
+  window.order = responseText;
+};
+
 function renderTemplate() {
+  if(getCookie('orderId').length == 0) {
+    (new SpreeApi.createOrder()).sendRequest({ cb: createOrder })
+  }
+  (new SpreeApi.currentOrder()).sendRequest({cb: getOrderDetails, path: '/api/ams/orders/' + getCookie('orderId')})
 
   var path = window.location.pathname.split('/')[1],
       id = window.location.pathname.split('/')[2],
@@ -129,6 +148,6 @@ function renderTemplate() {
     default:
       new SpreeApi.productsList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderIndexPage, params: {per_page: 8}});
   }
-}
+};
 
 renderTemplate();

@@ -24,14 +24,16 @@ ShowCart.prototype.bindEvents = function() {
   this.hide();
 };
 
-$(document).ready(function() {
-  var options = {
-    cartOpenBtn: $('.cart-icon'),
-    cart: $('.cart-container'),
-    cartCloseBtn: $('.close-cart'),
-    classToToggle: 'expand'
-  },
+$(function() {
+  setTimeout(function() {
+    var options = {
+      cartOpenBtn: $('.cart-icon'),
+      cart: $('.cart-container'),
+      cartCloseBtn: $('.close-cart'),
+      classToToggle: 'expand'
+    },
 
-  showCart = new ShowCart(options);
-  showCart.bindEvents();
+    showCart = new ShowCart(options);
+    showCart.bindEvents();
+  }, 250);
 });

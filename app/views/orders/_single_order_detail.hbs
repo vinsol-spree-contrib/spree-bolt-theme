@@ -6,15 +6,27 @@
       </a>
     </h4>
   </div>
-  <div id="collapse_{{id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_{{id}}">
+  <div id="collapse_{{id}}" class="panel-collapse collapse {{#firstItem @index 'in'}}{{/firstItem}}" role="tabpanel" aria-labelledby="heading_{{id}}">
     <div class="panel-body">
       <ul>
-        <li><b>Date:</b> <span>{{#formatDate completed_at}}{{body}}{{/formatDate}}</span></li>
-        <li><b>Status:</b> <span>{{state}}</span></li>
-        <li><b>Payment State:</b> <span>{{payment_state}}</span></li>
-        <li><b>Shipment State:</b> <span>{{shipment_state}}</span></li>
-        <li><b>Total Items:</b> <span>{{item_count}}</span></li>
-        <li><b>Total:</b> <span>${{total}}</span></li>
+        <li>
+          <b>Date:</b> <span>{{#formatDate completed_at}}{{body}}{{/formatDate}}</span>
+        </li>
+        <li>
+          <b>Status:</b> <span>{{state}}</span>
+        </li>
+        <li>
+          <b>Payment State:</b> <span>{{payment_state}}</span>
+        </li>
+        <li>
+          <b>Shipment State:</b> <span>{{shipment_state}}</span>
+        </li>
+        <li>
+          <b>Total Items:</b> <span>{{item_count}}</span>
+        </li>
+        <li>
+          <b>Total:</b> <span>${{total}}</span>
+        </li>
       </ul>
       <a href="#order-{{number}}" class="btn-action btn-dark" data-toggle="modal">View Summary</a>
     </div>

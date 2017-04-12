@@ -3,7 +3,7 @@ Handlebars.registerHelper('productUrl', function(id) {
 });
 
 Handlebars.registerHelper('productImageUrl', function(image_ids, images) {
-  return images.find(function(element){return element.id == image_ids[0]}).large_url;
+  return images.find(function(element) { return element.id == image_ids[0] }).large_url;
 });
 
 Handlebars.registerHelper('productCategoryUrl', function(id) {
@@ -24,6 +24,26 @@ Handlebars.registerHelper('isOrderComplete', function(completedAt, options) {
   if(completedAt != null) {
     return options.fn(this);
   }
+});
+
+Handlebars.registerHelper('isParent', function(id, options) {
+  if(id == null) {
+    return options.fn(this);
+  }
+});
+
+Handlebars.registerHelper('isChild', function(categories, taxonomy_id, options) {
+  var child = categories.map(function(elem, i){
+    if(elem.taxonomy_id == taxonomy_id){
+      return elem;
+    }
+  });
+  childs = child.filter(function(element){ return element != undefined });
+  return options.fn(childs);
+});
+
+Handlebars.registerHelper('firstItem', function(index, className) {
+  return index == 0 ? className : '';
 });
 
 Handlebars.registerHelper('formatDate', function(date) {

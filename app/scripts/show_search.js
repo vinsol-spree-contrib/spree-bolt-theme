@@ -15,7 +15,11 @@ ShowSearch.prototype.show = function() {
 ShowSearch.prototype.hide = function() {
   var _this = this;
   this.searchCloseBtn.on('click', function() {
-    _this.search.removeClass(_this.classToToggle);  
+    setTimeout(function() {
+      $('#search-input').val('');
+      $('.search-results').html('').removeClass('show-search');
+    }, 250);
+    _this.search.removeClass(_this.classToToggle);
   });
 };
 
@@ -24,14 +28,16 @@ ShowSearch.prototype.bindEvents = function() {
   this.hide();
 };
 
-$(document).ready(function() {
-  var options = {
-    searchOpenBtn: $('.main-search-btn'),
-    search: $('.search-bar'),
-    searchCloseBtn: $('.close-search'),
-    classToToggle: 'drop'
-  },
+$(window).on('load', function() {
+  setTimeout(function() {
+    var options = {
+      searchOpenBtn: $('.main-search-btn'),
+      search: $('.search-bar'),
+      searchCloseBtn: $('.close-search'),
+      classToToggle: 'drop'
+    },
 
-  showSearch = new ShowSearch(options);
-  showSearch.bindEvents();
+    showSearch = new ShowSearch(options);
+    showSearch.bindEvents();
+  }, 250);
 });
