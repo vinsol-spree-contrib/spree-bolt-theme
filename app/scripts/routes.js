@@ -59,9 +59,10 @@ function renderCategoryProductsPage(responseText) {
     images: responseText['images'],
     meta: responseText['meta']
   });
+  var activePage = Number(window.location.pathname.split('/')[2]);
   var totalPages = responseText.meta.total_pages;
   for(var index = 1; index <= totalPages; index++) {
-    $('.pagination-row .pagination').append('<li><a href="/category_products/?page=' + index + '">' + index + '</a></li>');
+    $('.pagination-row .pagination').append('<li><a href="/category_products/' + activePage + '?page=' + index + '">' + index + '</a></li>');
   }
   getActivePage(totalPages);
 };
@@ -78,7 +79,7 @@ function renderProductShowPage(responseText) {
 function renderAllProductsPage(responseText) {
   document.querySelector('#wrapper').innerHTML = MyApp.html.products({
     product: responseText['product'],
-    images: responseText['images']
+    images: responseText['images'],
   });
 };
 
@@ -109,13 +110,13 @@ function createOrder(response) {
 };
 
 function getOrderDetails(responseText) {
-}
+  window.order = responseText;
+};
 
 function renderTemplate() {
-  if(getCookie('orderId').length == 0){
+  if(getCookie('orderId').length == 0) {
     (new SpreeApi.createOrder()).sendRequest({ cb: createOrder })
   }
-
   (new SpreeApi.currentOrder()).sendRequest({cb: getOrderDetails, path: '/api/ams/orders/' + getCookie('orderId')})
 
   var path = window.location.pathname.split('/')[1],
@@ -147,6 +148,6 @@ function renderTemplate() {
     default:
       new SpreeApi.productsList().sendRequest({cb: renderIndexPage, params: {per_page: 8}});
   }
-}
+};
 
 renderTemplate();

@@ -11,7 +11,7 @@ function showSearchResults(responseText) {
 };
 
 function searchProducts() {
-  $('.search').on('input', function() {
+  $('#wrapper').on('input', '#search-input', function() {
   	$('.search-results').html('');
   	$('.search-results').removeClass('show-search');
   	if($(this).val().length){
