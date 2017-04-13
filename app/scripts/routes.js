@@ -61,6 +61,9 @@ function renderCategoryProductsPage(responseText) {
   });
   var activePage = Number(window.location.pathname.split('/')[2]);
   var totalPages = responseText.meta.total_pages;
+  if(totalPages <= 1) {
+    $('.pagination-row .pagination').addClass('hide');
+  }
   for(var index = 1; index <= totalPages; index++) {
     $('.pagination-row .pagination').append('<li><a href="/category_products/' + activePage + '?page=' + index + '">' + index + '</a></li>');
   }

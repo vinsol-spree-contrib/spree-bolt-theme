@@ -3,14 +3,6 @@ import Handlebars from './../../.tmp/scripts/handlebars.runtime.js'
 import Tea from './vendor/tea'
 import getCookie from './cookie'
 
-// Handlebars.registerHelper('currentOrder', function(fn) {
-//   localStorage.setItem('order', 'response')
-//   (new SpreeApi.currentOrder()).sendRequest({cb: test})
-//   function test(response){
-//     localStorage.setItem('order', response)
-//   }
-// });
-
 $(document).ready(function() {
   $('#wrapper').on('submit', '#sign-up', function(event) {
     (new SpreeApi.signUp()).sendRequest({params: {
@@ -25,27 +17,36 @@ $(document).ready(function() {
   function handleSuccess(response) { 
     var message = 'Your account has been successfully created. Please Login to continue.';
     $('#flash').addClass('slide-down').html(message);
+    $('#signup-modal, .modal-backdrop').removeClass('in');
     setTimeout(function() {
       $('#flash').removeClass('slide-down').html('');
-    },10000);
+    },5000);
   };
 });
 
+function eraseCookieFromAllPaths(name) {
+    // This function will attempt to remove a cookie from all paths.
+    var pathBits = location.pathname.split('/');
+    var pathCurrent = ' path=';
+
+    // do a simple pathless delete first.
+    document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
+    for (var i = 0; i < pathBits.length; i++) {
+        pathCurrent += ((pathCurrent.substr(-1) != '/') ? '/' : '') + pathBits[i];
+        document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;' + pathCurrent + ';';
+    }
+}
+
 function deleteAllCookies() {
-  var cookies = document.cookie.split(";");
-  for (var i = 0; i < cookies.length; i++) {
-      var cookie = cookies[i];
-      var eqPos = cookie.indexOf("=");
-      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;";
-  }
+  eraseCookieFromAllPaths('auth_token');
+  eraseCookieFromAllPaths('orderId');
+  window.location.reload();
 };
 
 $(document).ready(function() {
 
   $('body').on('click', '#logout', function() {
     deleteAllCookies();
-    location.reload();
   });
 
   $('#wrapper').on('submit', '#login', function(event) {
@@ -59,6 +60,10 @@ $(document).ready(function() {
   });
 
   function handleLoginSuccess(response) {
-    location.reload();
+    document.cookie = document.cookie + ";domain=" + window.location.origin + ";path=/"
+    var cookie_auth_key = "auth_token=";
+    if(document.cookie.indexOf(cookie_auth_key) > -1) {
+      location.reload();
+    }
   };
 });

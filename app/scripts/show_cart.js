@@ -7,15 +7,15 @@ var ShowCart = function(options) {
 
 ShowCart.prototype.show = function() {
   var _this = this;
-  this.cartOpenBtn.on('click', function() {
-    _this.cart.addClass(_this.classToToggle);
+  $('body').on('click', _this.cartOpenBtn, function() {
+    $(_this.cart).addClass(_this.classToToggle);
   });
 };
 
 ShowCart.prototype.hide = function() {
   var _this = this;
-  this.cartCloseBtn.on('click', function() {
-    _this.cart.removeClass(_this.classToToggle);  
+  $('body').on('click', _this.cartCloseBtn, function() {
+    $(_this.cart).removeClass(_this.classToToggle);  
   });
 };
 
@@ -25,15 +25,13 @@ ShowCart.prototype.bindEvents = function() {
 };
 
 $(function() {
-  setTimeout(function() {
-    var options = {
-      cartOpenBtn: $('.cart-icon'),
-      cart: $('.cart-container'),
-      cartCloseBtn: $('.close-cart'),
-      classToToggle: 'expand'
-    },
+  var options = {
+    cartOpenBtn: '.cart-icon',
+    cart: '.cart-container',
+    cartCloseBtn: '.close-cart',
+    classToToggle: 'expand'
+  },
 
-    showCart = new ShowCart(options);
-    showCart.bindEvents();
-  }, 250);
+  showCart = new ShowCart(options);
+  showCart.bindEvents();
 });

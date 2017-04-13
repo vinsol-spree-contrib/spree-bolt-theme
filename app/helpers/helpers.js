@@ -11,7 +11,7 @@ Handlebars.registerHelper('productCategoryUrl', function(id) {
 });
 
 Handlebars.registerHelper('isLoggedIn', function(options) {
-  var cookie_auth_key = "; auth_token=";
+  var cookie_auth_key = "auth_token=";
 
   if(document.cookie.indexOf(cookie_auth_key) > -1) {
     return options.fn(this);
@@ -38,7 +38,6 @@ Handlebars.registerHelper('isChild', function(categories, taxonomy_id, options) 
       return elem;
     }
   });
-  debugger
   childs = child.filter(function(element){ return element != undefined });
   return options.fn(childs);
 });
