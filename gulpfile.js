@@ -30,7 +30,12 @@ var s3Credentials = {
   "bucket": "spree-bolt-theme"
 };
 var s3 = require( "gulp-s3" );
-
+var options = {
+  headers: {
+    'Cache-Control': 'max-age=315360000, no-transform, public',
+    'x-amz-acl': 'public'
+  }
+};
 gulp.task('styles', () => {
 
   gulp.src('app/styles/vendor/flexslider.css')
@@ -253,6 +258,7 @@ gulp.task('default', () => {
     runSequence(['clean', 'wiredep'], 'build', resolve);
   });
 });
+
 gulp.task('deploy', ()=>{
   gulp.src('./.tmp/**')
   .pipe(s3(s3Credentials));
