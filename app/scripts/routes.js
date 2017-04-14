@@ -42,7 +42,7 @@ function renderHomePage(taxonData, productsData) {
 }
 
 function renderIndexPage(responseText) {
-  new SpreeApi.taxonomyList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: function(taxonData){
+  new SpreeApi.taxonomyList('https://spree-theme.herokuapp.com/').sendRequest({cb: function(taxonData){
     renderHomePage(taxonData, responseText)
   }});
 };
@@ -118,9 +118,9 @@ function getOrderDetails(responseText) {
 
 function renderTemplate() {
   if(getCookie('orderId').length == 0) {
-    (new SpreeApi.createOrder('https://spree-yoda-theme.herokuapp.com/')).sendRequest({ cb: createOrder })
+    (new SpreeApi.createOrder('https://spree-theme.herokuapp.com/')).sendRequest({ cb: createOrder })
   }
-  (new SpreeApi.currentOrder('https://spree-yoda-theme.herokuapp.com/')).sendRequest({cb: getOrderDetails, path: '/api/ams/orders/' + getCookie('orderId')})
+  (new SpreeApi.currentOrder('https://spree-theme.herokuapp.com/')).sendRequest({cb: getOrderDetails, path: '/api/ams/orders/' + getCookie('orderId')})
 
   var path = window.location.pathname.split('/')[1],
       id = window.location.pathname.split('/')[2],
@@ -128,28 +128,28 @@ function renderTemplate() {
 
   switch(path) {
     case 'categories':
-      new SpreeApi.taxonomyList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderCategoryPage});
+      new SpreeApi.taxonomyList('https://spree-theme.herokuapp.com/').sendRequest({cb: renderCategoryPage});
       break;
     case 'product':
-      new SpreeApi.productShow('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderProductShowPage, params: { id: id }});
+      new SpreeApi.productShow('https://spree-theme.herokuapp.com/').sendRequest({cb: renderProductShowPage, params: { id: id }});
       break;
     case 'category_products':
-      new SpreeApi.productsList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderCategoryProductsPage, params: { q: { taxons_id_eq: category_id }, per_page: 6, page: getUrlParameter('page') }});
+      new SpreeApi.productsList('https://spree-theme.herokuapp.com/').sendRequest({cb: renderCategoryProductsPage, params: { q: { taxons_id_eq: category_id }, per_page: 6, page: getUrlParameter('page') }});
       break;
     case 'cart':
-      new SpreeApi.productsList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderCart});
+      new SpreeApi.productsList('https://spree-theme.herokuapp.com/').sendRequest({cb: renderCart});
       break;
     case 'checkout':
-      new SpreeApi.productsList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderCheckout});
+      new SpreeApi.productsList('https://spree-theme.herokuapp.com/').sendRequest({cb: renderCheckout});
       break;
     case 'my_orders':
-      new SpreeApi.myOrders('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderMyOrders, path: '/api/ams/orders', method: 'GET'})
+      new SpreeApi.myOrders('https://spree-theme.herokuapp.com/').sendRequest({cb: renderMyOrders, path: '/api/ams/orders', method: 'GET'})
       break;
     case 'products':
-      new SpreeApi.productsList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderAllProductsPage});
+      new SpreeApi.productsList('https://spree-theme.herokuapp.com/').sendRequest({cb: renderAllProductsPage});
       break;
     default:
-      new SpreeApi.productsList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: renderIndexPage, params: {per_page: 8}});
+      new SpreeApi.productsList('https://spree-theme.herokuapp.com/').sendRequest({cb: renderIndexPage, params: {per_page: 8}});
   }
 };
 

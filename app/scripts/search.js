@@ -16,7 +16,7 @@ function searchProducts() {
   	$('.search-results').removeClass('show-search');
   	if($(this).val().length){
   		$('.search-results').addClass('show-search');
-        new SpreeApi.productsList('https://spree-yoda-theme.herokuapp.com/').sendRequest({cb: showSearchResults, params: { per_page: 5, q: { name_cont: $(this).val() }}});
+        new SpreeApi.productsList('https://spree-theme.herokuapp.com/').sendRequest({cb: showSearchResults, params: { per_page: 5, q: { name_cont: $(this).val() }}});
 		}
   });
 };

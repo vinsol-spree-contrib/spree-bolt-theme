@@ -4,7 +4,7 @@ import getCookie from './cookie'
 
 $(document).ready(function() {
   $('#wrapper').on('submit', '#sign-up', function(event) {
-    (new SpreeApi.signUp('https://spree-yoda-theme.herokuapp.com/')).sendRequest({params: {
+    (new SpreeApi.signUp('https://spree-theme.herokuapp.com/')).sendRequest({params: {
       user: {
         email: $('#user-sign-up-name').val(),
         password: $('#user-sign-up-password').val()
@@ -49,7 +49,7 @@ $(document).ready(function() {
   });
 
   $('#wrapper').on('submit', '#login', function(event) {
-    (new SpreeApi.login('https://spree-yoda-theme.herokuapp.com/')).sendRequest({params: {
+    (new SpreeApi.login('https://spree-theme.herokuapp.com/')).sendRequest({params: {
       user: {
         email: $('#user-login-name').val(),
         password: $('#user-login-password').val()
