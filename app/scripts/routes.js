@@ -104,8 +104,9 @@ function renderCart() {
   document.querySelector('#wrapper').innerHTML = MyApp.html.cart();
 };
 
-function renderCheckout() {
-  document.querySelector('#wrapper').innerHTML = MyApp.html.checkout();
+function renderCheckout(responseText) {
+  document.querySelector('#wrapper').innerHTML = MyApp.html.checkout({
+  });
 };
 
 function createOrder(response) {
@@ -134,7 +135,7 @@ function renderTemplate() {
       new SpreeApi.productShow().sendRequest({cb: renderProductShowPage, params: { id: id }});
       break;
     case 'category_products':
-      new SpreeApi.productsList().sendRequest({cb: renderCategoryProductsPage, params: { q: { taxons_id_eq: category_id }, per_page: 6, page: getUrlParameter('page') }});
+      new SpreeApi.productsList().sendRequest({cb: renderCategoryProductsPage, params: { q: { taxons_id_eq: category_id }, per_page: 8, page: getUrlParameter('page') }});
       break;
     case 'cart':
       new SpreeApi.productsList().sendRequest({cb: renderCart});

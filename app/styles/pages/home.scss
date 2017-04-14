@@ -217,13 +217,20 @@ $image-url : '../../images/';
 
 .flex-product-row {
   display: flex;
+  -moz-display: flex;
+  -webkit-display: flex;
   flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  justify-content: center;
+  -moz-justify-content: center;
+  -webkit-justify-content: center;
   .single-product {
     background: $primary-white;
     position: relative;
     margin: 5px;
     padding: 0!important;
-    width: calc(33.333% - 10px);
+    width: calc(25% - 10px);
   }
 }
 
@@ -233,6 +240,20 @@ $image-url : '../../images/';
       width: calc(25% - 10px);   
     }
   }
+}
+
+.product-image {
+  height: 228px;
+  width: 228px;
+  display: flex;
+  -moz-display: flex;
+  -webkit-display: flex;
+  align-items: center;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -moz-justify-content: center;
+  -webkit-justify-content: center;
 }
 
 /* RESPONSIVE */
