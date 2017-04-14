@@ -2,13 +2,15 @@
   <div class="container container-5px">
     <h3 class="decorated-heading">
       <span>Explore Dining</span>
-      <a href="/products" class="btn btn-view-all pull-right">View All Products</a>
+      <a href="/category_products/10" class="btn btn-view-all pull-right">View All Products</a>
     </h3>
     <div class="row p-t-30 row-5px flex-product-row">
       {{#each products}}
         <div class="col-md-3 text-center col-5px single-product">
           <div class="product-container">
-            <img src={{#productImageUrl image_ids ../images}}{{body}}{{/productImageUrl}} class="img-full">
+            <figure class="product-image">
+              <img src={{#productImageUrl image_ids ../images}}{{body}}{{/productImageUrl}} class="img-full">
+            </figure>
             <h3 class="product-name">{{name}}</h3>
             <h4 class="product-price">${{price}}</h4>
             <div class="product-container-inner">
@@ -34,35 +36,35 @@
 
     <div class="row p-t-50 category-items">
       <div class="col-md-6 category-item">
-        <a href="#">
-          <span class="category-name">Decor</span>
+        <a href="category_products/10">
+          <span class="category-name">Bags</span>
           <img src="images/category_10.jpg" alt="" class="img-full">
         </a>
       </div>
       <div class="col-md-6 category-item">
         <div class="row">
           <div class="col-md-6">
-            <a href="#">
+            <a href="category_products/10">
               <span class="category-name">Wall Decor</span>
               <img src="images/category_11.jpg" alt="" class="img-full">
             </a>
           </div>
-          <div class="col-md-6 category-item">
-            <a href="">
+          <div class="col-md-6">
+            <a href="category_products/10">
               <span class="category-name">Jars</span>
               <img src="images/category_03.jpg" alt="" class="img-full">
             </a>
           </div>
         </div>
         <div class="row p-t-30">
-          <div class="col-md-6 category-item">
-            <a href="#">
+          <div class="col-md-6">
+            <a href="category_products/10">
               <span class="category-name">Bed Covers</span>
               <img src="images/category_9.jpg" alt="" class="img-full">  
             </a>
           </div>
-          <div class="col-md-6 category-item">
-            <a href="#">
+          <div class="col-md-6">
+            <a href="category_products/10">
               <span class="category-name">Furniture</span>
               <img src="images/category_8.jpg" alt="" class="img-full">
             </a>
@@ -77,7 +79,7 @@
   <div class="container container-5px">
     <h3 class="decorated-heading">
       <span>Explore Wall Decor</span>
-      <a href="javascript:void(0);" class="btn btn-view-all pull-right">View all products</a>
+      <a href="/category_products/10" class="btn btn-view-all pull-right">View all products</a>
     </h3>
     <div class="row p-t-30 row-5px flex-product-row">
       {{#each products}}
