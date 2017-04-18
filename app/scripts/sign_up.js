@@ -46,6 +46,7 @@ $(document).ready(function() {
 
   $('body').on('click', '#logout', function() {
     deleteAllCookies();
+    window.location.href = "/";
   });
 
   $('#wrapper').on('submit', '#login', function(event) {

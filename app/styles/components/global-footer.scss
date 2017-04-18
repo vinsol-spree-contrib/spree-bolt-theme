@@ -104,3 +104,20 @@ $image-url : '../../images/';
     height: auto;
   }
 }
+
+@media(max-width: $mobile) {
+  .primary-footer {
+    padding: 25px 15px;
+    text-align: center;
+
+    .decorated-heading {
+      margin: 20px 0;
+    }
+
+    .decorated-heading span::before {
+      left: 50%;
+      margin-left: -20px;
+    }
+
+  }
+}
